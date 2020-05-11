@@ -1,4 +1,43 @@
-body
-{
-    background-color: rgb(128, 235, 235);
+body {
+    font-family: Arial;
+    background-color: rgb(123, 221, 221);
+}
+
+#introduction {
+    padding: 1vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    border-radius: 1vw;
+    margin-bottom: 1vh;
+}
+
+#details {
+    direction: rtl;
+    padding: 1vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    border-radius: 7vw;
+}
+
+#all-details {
+    padding: 1vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    margin-bottom: 1vh;
+}
+
+#specific-details {
+    padding: 1vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
 }
