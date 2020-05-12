@@ -3,6 +3,13 @@ body {
     background-color: rgb(123, 221, 221);
 }
 
+#page {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+}
+
 #introduction {
     padding: 1vw;
     background-color: white;
@@ -13,8 +20,18 @@ body {
     margin-bottom: 1vh;
 }
 
-#details {
+.column { 
+    box-sizing: border-box;
+    float: left;
+    height: 100%;
+}
+
+#content {
     direction: rtl;
+    flex-grow : 1;
+}
+
+#details {
     padding: 1vw;
     padding-left: 4vw;
     padding-right: 4vw;
@@ -22,7 +39,9 @@ body {
     border: 2px;
     border-style: solid;
     border-color: rgb(85, 85, 240);
-    border-radius: 7vw;
+    border-radius: 8vw;
+    margin-right: 1vh;
+    width: 73%;
 }
 
 #all-details {
@@ -31,7 +50,20 @@ body {
     border: 2px;
     border-style: solid;
     border-color: rgb(85, 85, 240);
+    margin-top: 1vh;
     margin-bottom: 1vh;
+    height: 61vh;
+}
+
+.details-header {
+    margin-top: 0vh;
+    text-indent: 5vw;
+}
+
+.detail {
+    text-indent: 7vw;
+    list-style-position: inside;
+    margin: 0vw;
 }
 
 #specific-details {
@@ -40,4 +72,41 @@ body {
     border: 2px;
     border-style: solid;
     border-color: rgb(85, 85, 240);
+    height: 15vh;
+}
+
+#specific-details-name{
+    margin-top: 0vh;
+    text-indent: 5vw;
+}
+
+#buttons {
+    padding: 1vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    border-radius: 3vw;
+    width: 25%;
+    background-color: rgb(137, 174, 223);
+}
+
+.button-link { 
+
+    text-decoration: none;
+}
+
+.button {
+    color: white;
+    text-align: center;
+    list-style: none;
+    background-color: turquoise;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    border-radius: 1vw;
+    margin-bottom: 5vh;
 }
