@@ -1,0 +1,168 @@
+body {
+    font-family: Arial;
+    background-color: rgb(123, 221, 221);
+}
+
+.page {
+    display: flex;
+    flex-direction: unset;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+}
+
+.introduction {
+    direction: ltr;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding-right: 1vh;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    border-radius: 1vw;
+    margin-bottom: 1vh;
+}
+
+.nameIntroduction {
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.clock {
+    display: flex;
+}
+
+.clockText {
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+.clockButton {
+	background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+	background-color: #3d94f6;
+	border-radius: 6px;
+	border: 1px solid #337fed;
+	cursor: pointer;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.clockButton:hover {
+	background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+}
+
+.introductionLogo {
+    flex-flow: nowrap;
+    float: right;
+    padding: 0vw;
+    padding-top: 1vh;
+    padding-right: 1vw;
+}
+
+.column { 
+    box-sizing: border-box;
+    float: left;
+    height: 100%;
+}
+
+.content {
+    flex-grow : 1;
+}
+
+.details {
+    padding: 1vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    border-radius: 8vw;
+    margin-right: 1vh;
+    width: 73%;
+}
+
+.allDetails {
+    display: block;
+    padding: 1vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    height: 70%;
+}
+
+.detailsHeader {
+    margin-top: 0vh;
+    text-indent: 5vw;
+}
+
+.detail {
+    text-indent: 7vw;
+    list-style-position: inside;
+    margin: 0vw;
+}
+
+.specificDetails {
+    display: block;
+    padding: 1vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    height: 15%;
+}
+
+.specificDetailsName{
+    margin-top: 0vh;
+    text-indent: 5vw;
+}
+
+.sideBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    background-color: white;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(85, 85, 240);
+    border-radius: 3vw;
+    width: 25%;
+    background-color: rgb(137, 174, 223);
+}
+
+.sideBarLink { 
+    text-decoration: none;
+}
+
+.sideBarButton {
+	background: linear-gradient(to bottom, #60dff0 5%, #408c99 100%);
+    background-color: turquoise;
+    border-radius: 1vw;
+    display: inline-block;
+    border: none;
+    padding: 2vh 4vw;
+	cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight:bold;
+    margin-bottom: 1vh;
+}
+
+button:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #60dff0 100%);
+	background-color:#408c99;
+}
+
