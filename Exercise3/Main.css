@@ -146,16 +146,14 @@ body {
     background-color: rgb(137, 174, 223);
 }
 
-.sideBarLink { 
-    text-decoration: none;
-}
-
 .sideBarButton {
 	background: linear-gradient(to bottom, #60dff0 5%, #408c99 100%);
     background-color: turquoise;
     border-radius: 1vw;
     display: inline-block;
     border: none;
+    width: 18vw;
+    height: 9vh;
     padding: 2vh 4vw;
 	cursor: pointer;
     color: white;

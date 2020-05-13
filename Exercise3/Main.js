@@ -1,4 +1,10 @@
 window.onload = () => {
+    $(document).ready(function () {
+        $("p").click(function () {
+            $(this).hide();
+        });
+    });
+
     showTime();
 };
 
@@ -30,10 +36,39 @@ showTime = () => {
 }
 
 // Add zero before the number if needed
-adjustTime  = (number) => {
+adjustTime = (number) => {
     if (number < 10) {
         number = "0" + number;
     }
 
     return number;
 }
+
+animal = [
+    {
+        'id': 1,
+        'name': 'חתול',
+        'cageId': 2,
+        'legs': 4
+    },
+    {
+        'id': 2,
+        'name': 'כלב',
+        'cageId': 1,
+        'legs': 4
+    },
+     {
+        'id': 3,
+        'name': 'אריה',
+        'cageId': 3,
+        'legs': 4
+    },
+     {
+        'id': 4,
+        'name': 'נחש',
+        'cageId': 2,
+        'legs': 0
+    },
+]
+
+cages = [{1: 'Fistook`s Home'}, {2: 'The Museum of Art, Tel Aviv'}, {3: 'The Knesset'}]
