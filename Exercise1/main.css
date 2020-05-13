@@ -3,7 +3,7 @@ body {
     background-color: rgb(123, 221, 221);
 }
 
-#page {
+.page {
     display: flex;
     flex-direction: unset;
     flex-flow: column;
@@ -11,7 +11,8 @@ body {
     height: 100%;
 }
 
-#introduction {
+.introduction {
+    direction: ltr;
     display: flex;
     justify-content: space-between;
     background-color: white;
@@ -23,7 +24,7 @@ body {
     margin-bottom: 1vh;
 }
 
-#name-introduction {
+.nameIntroduction {
     padding-left: 1vw;
     padding-right: 1vw;
 }
@@ -43,12 +44,11 @@ img {
     height: 100%;
 }
 
-#content {
-    direction: rtl;
+.content {
     flex-grow : 1;
 }
 
-#details {
+.details {
     padding: 1vw;
     padding-left: 4vw;
     padding-right: 4vw;
@@ -61,7 +61,7 @@ img {
     width: 73%;
 }
 
-#all-details {
+.allDetails {
     display: block;
     padding: 1vw;
     background-color: white;
@@ -73,7 +73,7 @@ img {
     height: 70%;
 }
 
-.details-header {
+.detailsHeader {
     margin-top: 0vh;
     text-indent: 5vw;
 }
@@ -84,7 +84,7 @@ img {
     margin: 0vw;
 }
 
-#specific-details {
+.specificDetails {
     display: block;
     padding: 1vw;
     background-color: white;
@@ -94,13 +94,12 @@ img {
     height: 15%;
 }
 
-#specific-details-name{
+.specificDetailsName{
     margin-top: 0vh;
     text-indent: 5vw;
 }
 
-#buttons {
-  
+.sideBar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,11 +116,11 @@ img {
     background-color: rgb(137, 174, 223);
 }
 
-.button-link { 
+.sideBarLink { 
     text-decoration: none;
 }
 
-button {
+.sideBarButton {
 	background: linear-gradient(to bottom, #60dff0 5%, #408c99 100%);
     background-color: turquoise;
     border-radius: 1vw;
