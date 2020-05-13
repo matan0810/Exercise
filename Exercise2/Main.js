@@ -3,8 +3,9 @@ window.onload = () => {
 };
 
 // Starts or stops the clock interval
-function clockHandle() {
+clockHandle = () => {
     if (document.getElementsByClassName("clockButton")[0].innerText === "התחל") {
+        showTime()
         clockInterval = setInterval(showTime, 1000);
         document.getElementsByClassName("clockButton")[0].innerText = "הפסק";
     }
@@ -15,7 +16,7 @@ function clockHandle() {
 }
 
 // Updates the clock text to current time
-function showTime() {
+showTime = () => {
     let currentDate = new Date();
 
     let hours = currentDate.getHours();
@@ -29,7 +30,7 @@ function showTime() {
 }
 
 // Add zero before the number if needed
-function adjustTime(number) {
+adjustTime  = (number) => {
     if (number < 10) {
         number = "0" + number;
     }
