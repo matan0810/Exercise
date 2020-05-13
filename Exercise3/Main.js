@@ -1,11 +1,49 @@
-window.onload = () => {
-    $(document).ready(function () {
-        $("p").click(function () {
-            $(this).hide();
-        });
-    });
+cages = [
+    {
+        'id': 1,
+        'name': 'Fistook`s Home'
+    },
+    {
+        'id': 2,
+        'name': 'Metzada'
+    },
+    {
+        'id': 3,
+        'name': 'The Knesset'
+    }
+]
 
+animals = [
+    {
+        'id': 1,
+        'name': 'רוס',
+        'cageId': 2,
+        'legs': 2
+    },
+    {
+        'id': 2,
+        'name': 'צנדלר',
+        'cageId': 1,
+        'legs': 4
+    },
+    {
+        'id': 3,
+        'name': 'פיבי',
+        'cageId': 3,
+        'legs': 3
+    },
+    {
+        'id': 4,
+        'name': 'ברני',
+        'cageId': 2,
+        'legs': 0
+    },
+]
+
+window.onload = () => {
     showTime();
+
+    loadTable();
 };
 
 // Starts or stops the clock interval
@@ -44,31 +82,22 @@ adjustTime = (number) => {
     return number;
 }
 
-animal = [
-    {
-        'id': 1,
-        'name': 'חתול',
-        'cageId': 2,
-        'legs': 4
-    },
-    {
-        'id': 2,
-        'name': 'כלב',
-        'cageId': 1,
-        'legs': 4
-    },
-     {
-        'id': 3,
-        'name': 'אריה',
-        'cageId': 3,
-        'legs': 4
-    },
-     {
-        'id': 4,
-        'name': 'נחש',
-        'cageId': 2,
-        'legs': 0
-    },
-]
+loadTable = () => {
+    animals.forEach(animal => {
+        rowToAdd = '<tr class="animalTableRow">' +
+            '<th class="animalTableCell">' + animal.id + '</th>' +
+            '<th class="animalTableCell">' + animal.name + '</th>' +
+            '<th class="animalTableCell">' + getCageName(animal.cageId) + '</th>' +
+            '<th class="animalTableCell">' + animal.legs + '</th>' +
+            '<th class="animalTableCell"><img class="garbageIcon" src="./images/garbage.png"></th>' +
+            '</tr>';
 
-cages = [{1: 'Fistook`s Home'}, {2: 'The Museum of Art, Tel Aviv'}, {3: 'The Knesset'}]
+        console.log($('.animalTable').append(rowToAdd));
+    });
+}
+
+getCageName = (cageId) => {
+    wantedCage = cages.find((cage) => cage.id == cageId);
+
+    return wantedCage.name;
+}

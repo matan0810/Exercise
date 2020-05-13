@@ -166,3 +166,17 @@ button:hover {
 	background:linear-gradient(to bottom, #408c99 5%, #60dff0 100%);
 	background-color:#408c99;
 }
+
+.animalTable {
+    width: 80%;
+    border: 1px solid #ddd;
+}
+
+.animalTableCell {
+    padding: 2vh;
+}
+
+.garbageIcon {
+    width: 27px;
+    height: 27px;
+}
