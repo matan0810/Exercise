@@ -90,7 +90,7 @@ loadTable = () => {
             '<th class="animalTableCell">' + animal.name + '</th>' +
             '<th class="animalTableCell">' + getCageName(animal.cageId) + '</th>' +
             '<th class="animalTableCell">' + animal.legs + '</th>' +
-            '<th class="animalTableCell"><img class="garbageIcon" src="./images/garbage.png"></th>' +
+            '<th class="animalGarbageCell"><img class="garbageIcon" src="./images/garbage.png"></th>' +
             '</tr>';
 
         $('.animalTable').append(rowToAdd);
@@ -128,5 +128,7 @@ rowDeleteHandle = () => {
         });
 
         $(".removedRow").remove()
+
+        $('.saveAnimalButton').attr('disabled', 'disabled') 
     });
 }
