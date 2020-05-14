@@ -38,6 +38,7 @@ window.onload = () => {
     showTime();
     updateTable();
     sideBarHandle()
+    rowDeleteHandle();
     updateCageForm();
     handleNewAnimalSubmit();
 };
@@ -117,7 +118,6 @@ updateTable = () => {
         $('.animalTable').append(rowToAdd);
     });
 
-    rowDeleteHandle();
     garbageIconHandle();
     specificDetailsHandle();
 }
@@ -200,5 +200,12 @@ handleNewAnimalSubmit = () => {
         animals.push(newAnimal);
         
         updateTable();
+
+        // todo: make function
+        $('.visible').addClass('hidden');
+        $('.visible').removeClass('visible');
+
+        $('.animalsScreen').removeClass('hidden');
+        $('.animalsScreen').addClass('visible');
     });
 }
