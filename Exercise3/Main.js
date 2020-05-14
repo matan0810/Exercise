@@ -45,6 +45,7 @@ window.onload = () => {
     loadTable();
     garbageIconHandle();
     rowDeleteHandle();
+    specificDetailsHandle();
 };
 
 // Starts or stops the clock interval
@@ -90,7 +91,7 @@ loadTable = () => {
             '<th class="animalTableCell">' + animal.name + '</th>' +
             '<th class="animalTableCell">' + getCageName(animal.cageId) + '</th>' +
             '<th class="animalTableCell">' + animal.legs + '</th>' +
-            '<th class="animalGarbageCell"><img class="garbageIcon" src="./images/garbage.png"></th>' +
+            '<th class="garbageTableCell"><img class="garbageIcon" src="./images/garbage.png"></th>' +
             '</tr>';
 
         $('.animalTable').append(rowToAdd);
@@ -112,10 +113,10 @@ garbageIconHandle = () => {
         $(this).closest('tr').toggleClass("removedRow");
 
         if (!$(".animalTableRow").hasClass('removedRow')) {
-            $('.saveAnimalButton').attr('disabled', 'disabled')
+            $('.saveAnimalButton').attr('disabled', 'disabled');s
         }
         else {
-            $('.saveAnimalButton').removeAttr('disabled')
+            $('.saveAnimalButton').removeAttr('disabled');
         }
     });
 }
@@ -123,12 +124,19 @@ garbageIconHandle = () => {
 rowDeleteHandle = () => {
     $('.saveAnimalButton').click(function () {
 
-        $(".removedRow").each(function () {
-            removeAnimalById($(this).children().first().text())
+        $('.removedRow').each(function () {
+            removeAnimalById($(this).children().first().text());
         });
 
-        $(".removedRow").remove()
+        $('.removedRow').remove();
 
-        $('.saveAnimalButton').attr('disabled', 'disabled') 
+        $('.saveAnimalButton').attr('disabled', 'disabled');
+    });
+}
+
+specificDetailsHandle = () => {
+    $('.animalTableCell').click(function () {
+        $('.chosenRow').removeClass('chosenRow');
+        $(this).parent().addClass('chosenRow');
     });
 }

@@ -79,7 +79,7 @@ button {
     flex-grow : 1;
 }
 
-.details {
+.detailsScreen {
     display: flex;
     flex-direction: column;
     padding: 1vw;
@@ -94,7 +94,7 @@ button {
     width: 73%;
 }
 
-.allDetails {
+.allDetailsScreen {
     display: block;
     padding: 1vw;
     background-color: white;
@@ -109,12 +109,6 @@ button {
 .detailsHeader {
     margin-top: 0vh;
     text-indent: 5vw;
-}
-
-.detail {
-    text-indent: 7vw;
-    list-style-position: inside;
-    margin: 0vw;
 }
 
 .specificDetails {
@@ -172,26 +166,29 @@ button {
     box-shadow: black 0px 0px 3px;
 }
 
-.animalTableBox {
+.AnimalsTableScreen {
     display: flex;
     flex-direction: column;
 }
 
 .animalTable {
     width: 80%;
-    margin-top: 2vh;
-    margin-right: 5vw;
-    border-collapse: collapse; 
+    margin-top: 3vh;
+    margin-right: 6vw;
+    border-collapse: collapse;
+    border: 1px solid rgb(85, 85, 240);
+}
+
+.animalTableHeader {
+    background-color: rgb(227, 176, 250);
 }
 
 .animalTableProperty {
     padding: 1vw;
-    border: 1px solid black;
-    background-color: rgb(255, 209, 255);
 }
 
 .animalTableRow {
-    border: 1px solid black;
+    border: 1px solid rgb(85, 85, 240);
     background-color: rgb(255, 231, 255);
 }
 
@@ -210,6 +207,11 @@ button {
     cursor: pointer;
     background-color: lightblue;
     box-shadow: black 0px 0px 5px;
+}
+
+.chosenRow {
+    background-color: rgb(181, 235, 255);
+    font-style: italic;
 }
 
 .garbageIcon {
@@ -236,8 +238,8 @@ tr.removedRow .animalTableCell::before {
 }
 
 .saveAnimalButton {
-    margin: 2vh;
-    margin-right: 8vw;
+    margin: 4vh;
+    margin-right: 10vw;
     width: 8vw;
     height: 4vh;
 	background: black;
