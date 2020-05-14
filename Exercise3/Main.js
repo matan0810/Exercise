@@ -146,6 +146,10 @@ rowDeleteHandle = () => {
     $('.saveAnimalButton').click(function () {
 
         $('.removedRow').each(function () {
+            if ($(this).hasClass('chosenRow')) {
+                $('.specificAnimalDetails').empty();
+            }
+
             removeAnimalById($(this).children().first().text());
         });
 
@@ -163,7 +167,7 @@ specificDetailsHandle = () => {
         let wantedAnimal = getAnimalById($(this).siblings().first().text())
 
         textToAdd = `<p class="specificAnimalHeader">נבחרה חיה מספר ${wantedAnimal.id}</p>` +
-        `<p>שם החיה: ${wantedAnimal.name}, נמצאת בכלוב:
+            `<p>שם החיה: ${wantedAnimal.name}, נמצאת בכלוב:
          ${getCageName(wantedAnimal.cageId)}, מספר רגליים לחיה: ${wantedAnimal.legs}`
 
         $('.specificAnimalDetails').html(textToAdd);
