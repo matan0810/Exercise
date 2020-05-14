@@ -112,7 +112,9 @@ button {
 }
 
 .detailsHeader {
+    font-size: 27px;
     margin-top: 0vh;
+    margin-bottom: 0vw;
     text-indent: 5vw;
 }
 
@@ -126,9 +128,10 @@ button {
     height: 20%;
 }
 
-.specificDetailsName{
-    margin-top: 0vh;
-    text-indent: 5vw;
+.specificAnimalHeader {
+    font-size: 110%;
+    font-weight: bold;
+    margin-bottom: 0vw;
 }
 
 .sideBar {

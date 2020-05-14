@@ -93,6 +93,9 @@ sideBarHandle = () => {
         let chosenScreen = $(this).attr('rel');
         $("." + chosenScreen).removeClass('hidden');
         $("." + chosenScreen).addClass('visible');
+
+        // Clears the specific details box
+        $('.specificAnimalDetails').empty();
     });
 }
 
@@ -159,8 +162,9 @@ specificDetailsHandle = () => {
 
         let wantedAnimal = getAnimalById($(this).siblings().first().text())
 
-        textToAdd = `<p>נבחרה חיה מספר ${wantedAnimal.id}</p>` +
-        `<p>שם החיה: ${wantedAnimal.name}, נמצאת בכלוב: ${getCageName(wantedAnimal.cageId)}, מספר רגליים לחיה: ${wantedAnimal.legs} `
+        textToAdd = `<p class="specificAnimalHeader">נבחרה חיה מספר ${wantedAnimal.id}</p>` +
+        `<p>שם החיה: ${wantedAnimal.name}, נמצאת בכלוב:
+         ${getCageName(wantedAnimal.cageId)}, מספר רגליים לחיה: ${wantedAnimal.legs}`
 
         $('.specificAnimalDetails').html(textToAdd);
     });
