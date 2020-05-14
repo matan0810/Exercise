@@ -42,12 +42,9 @@ animals = [
 
 window.onload = () => {
     showTime();
-
     loadTable();
-
-    $(".garbageIcon").click(function () {
-        $(this).closest('tr').toggleClass("removedRow");
-    });
+    garbageIconHandle();
+    rowDeleteHandle();
 };
 
 // Starts or stops the clock interval
@@ -104,4 +101,32 @@ getCageName = (cageId) => {
     wantedCage = cages.find((cage) => cage.id == cageId);
 
     return wantedCage.name;
+}
+
+removeAnimalById = (animalId) => {
+    animals = animals.filter((animal) => animal.id != animalId);
+}
+
+garbageIconHandle = () => {
+    $(".garbageIcon").click(function () {
+        $(this).closest('tr').toggleClass("removedRow");
+
+        if (!$(".animalTableRow").hasClass('removedRow')) {
+            $('.saveAnimalButton').attr('disabled', 'disabled')
+        }
+        else {
+            $('.saveAnimalButton').removeAttr('disabled')
+        }
+    });
+}
+
+rowDeleteHandle = () => {
+    $('.saveAnimalButton').click(function () {
+
+        $(".removedRow").each(function () {
+            removeAnimalById($(this).children().first().text())
+        });
+
+        $(".removedRow").remove()
+    });
 }
