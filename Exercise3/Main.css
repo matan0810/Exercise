@@ -7,6 +7,10 @@ button {
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 .page {
     display: flex;
     flex-direction: unset;
@@ -73,6 +77,7 @@ button {
     float: left;
     height: 100%;
 }
+
 
 .content {
     display: flex;
@@ -164,11 +169,6 @@ button {
     background-color:#408c99;
     border: 1px solid black;
     box-shadow: black 0px 0px 3px;
-}
-
-.AnimalsTableScreen {
-    display: flex;
-    flex-direction: column;
 }
 
 .animalTable {

@@ -22,16 +22,16 @@
 
         <div class="content row">
             <div class="sideBar column">
-                <button class="sideBarButton">חיות</button>
-                <button class="sideBarButton">חיה חדשה</button>
-                <button class="sideBarButton">ביבי</button>
-                <button class="sideBarButton">בוגי</button>
-                <button class="sideBarButton">בוז'י</button>
+                <button class="sideBarButton" rel='detailsScreen1'>חיות</button>
+                <button class="sideBarButton" rel='detailsScreen2'>חיה חדשה</button>
+                <button class="sideBarButton" rel='detailsScreen3'>ביבי</button>
+                <button class="sideBarButton" rel='detailsScreen4'>בוגי</button>
+                <button class="sideBarButton" rel='detailsScreen5'>בוז'י</button>
             </div>
 
             <div class="detailsScreen column currentScreen">
                 <div class="allDetailsScreen">
-                    <div class="AnimalsTableScreen">
+                    <div class="detailsScreen1 hidden">
                         <table class="animalTable">
                             <tr class="animalTableHeader">
                                 <th class="animalTableProperty">מספר חיה</th>
@@ -44,11 +44,16 @@
 
                         <button class="saveAnimalButton" disabled>שמור</button>
                     </div>
+
+                    <div class="detailsScreen2 hidden">
+                        hi
+                    </div>
                 </div>
 
                 <div class="specificDetails">
                     <h1 class="detailsHeader">פרטים ספציפיים:</h1>
-                    <p class="specificDetailsName">שם פריט, שם פריט, שם פריט, שם פריט</p>
+                    
+                    <div class="specificAnimalDetails"></div>
                 </div>
             </div>
         </div>

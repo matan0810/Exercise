@@ -43,6 +43,7 @@ animals = [
 window.onload = () => {
     showTime();
     loadTable();
+    sideBarHandle()
     garbageIconHandle();
     rowDeleteHandle();
     specificDetailsHandle();
@@ -84,6 +85,17 @@ adjustTime = (number) => {
     return number;
 }
 
+sideBarHandle = () => {
+    $('.sideBarButton').click(function () {
+        $('.visible').addClass('hidden');
+        $('.visible').removeClass('visible');
+
+        let chosenScreen = $(this).attr('rel');
+        $("." + chosenScreen).removeClass('hidden');
+        $("." + chosenScreen).addClass('visible');
+    });
+}
+
 loadTable = () => {
     animals.forEach(animal => {
         rowToAdd = '<tr class="animalTableRow">' +
@@ -104,6 +116,12 @@ getCageName = (cageId) => {
     return wantedCage.name;
 }
 
+getAnimalById = (animalId) => {
+    wantedAnimal = animals.find((animal) => animal.id == animalId);
+
+    return wantedAnimal;
+}
+
 removeAnimalById = (animalId) => {
     animals = animals.filter((animal) => animal.id != animalId);
 }
@@ -113,7 +131,7 @@ garbageIconHandle = () => {
         $(this).closest('tr').toggleClass("removedRow");
 
         if (!$(".animalTableRow").hasClass('removedRow')) {
-            $('.saveAnimalButton').attr('disabled', 'disabled');s
+            $('.saveAnimalButton').attr('disabled', 'disabled'); s
         }
         else {
             $('.saveAnimalButton').removeAttr('disabled');
@@ -138,5 +156,12 @@ specificDetailsHandle = () => {
     $('.animalTableCell').click(function () {
         $('.chosenRow').removeClass('chosenRow');
         $(this).parent().addClass('chosenRow');
+
+        let wantedAnimal = getAnimalById($(this).siblings().first().text())
+
+        textToAdd = `<p>נבחרה חיה מספר ${wantedAnimal.id}</p>` +
+        `<p>שם החיה: ${wantedAnimal.name}, נמצאת בכלוב: ${getCageName(wantedAnimal.cageId)}, מספר רגליים לחיה: ${wantedAnimal.legs} `
+
+        $('.specificAnimalDetails').html(textToAdd);
     });
 }
