@@ -160,16 +160,19 @@ body {
     font-size: 16px;
     font-weight:bold;
     margin-bottom: 1vh;
-}
+}   
 
-button:hover {
+.sideBarButton:hover {
 	background:linear-gradient(to bottom, #408c99 5%, #60dff0 100%);
-	background-color:#408c99;
+    background-color:#408c99;
+    border: 1px solid black;
+    box-shadow: black 0px 0px 3px;
 }
 
 .animalTable {
     width: 80%;
-    border: 1px solid #ddd;
+    border: 1px solid black;
+    border-collapse: collapse; 
 }
 
 .animalTableCell {
@@ -177,6 +180,27 @@ button:hover {
 }
 
 .garbageIcon {
+    cursor: pointer;
     width: 27px;
     height: 27px;
+}
+
+.garbageIcon:hover {
+    border-radius: 50%;
+    box-shadow: black 0px 0px 5px;
+    width: 27px;
+    height: 27px;
+}
+
+.animalTableCell {
+    position: relative;
+}
+
+tr.removedRow .animalTableCell::before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-bottom: 2px solid tomato;
+    width: 100%;
 }

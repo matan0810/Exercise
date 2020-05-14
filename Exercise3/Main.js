@@ -44,6 +44,10 @@ window.onload = () => {
     showTime();
 
     loadTable();
+
+    $(".garbageIcon").click(function () {
+        $(this).closest('tr').toggleClass("removedRow");
+    });
 };
 
 // Starts or stops the clock interval
@@ -92,7 +96,7 @@ loadTable = () => {
             '<th class="animalTableCell"><img class="garbageIcon" src="./images/garbage.png"></th>' +
             '</tr>';
 
-        console.log($('.animalTable').append(rowToAdd));
+        $('.animalTable').append(rowToAdd);
     });
 }
 
