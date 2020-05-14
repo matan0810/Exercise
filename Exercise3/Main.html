@@ -1,4 +1,5 @@
 <html dir="rtl">
+
 <head>
     <title>Exercise3</title>
     <link rel="icon" href="./images/maofLogo.png">
@@ -6,6 +7,7 @@
     <script src="./Main.js"></script>
     <script src="../jquery-3.5.1.min.js"></script>
 </head>
+
 <body>
     <div class="page">
         <div class="introduction row">
@@ -22,8 +24,8 @@
 
         <div class="content row">
             <div class="sideBar column">
-                <button class="sideBarButton" rel='detailsScreen1'>חיות</button>
-                <button class="sideBarButton" rel='detailsScreen2'>חיה חדשה</button>
+                <button class="sideBarButton" rel='AnimalsScreen'>חיות</button>
+                <button class="sideBarButton" rel='newAnimalScreen'>חיה חדשה</button>
                 <button class="sideBarButton" rel='detailsScreen3'>ביבי</button>
                 <button class="sideBarButton" rel='detailsScreen4'>בוגי</button>
                 <button class="sideBarButton" rel='detailsScreen5'>בוז'י</button>
@@ -31,32 +33,46 @@
 
             <div class="detailsScreen column currentScreen">
                 <div class="allDetailsScreen">
-                    <div class="detailsScreen1 hidden">
-                        <table class="animalTable">
-                            <tr class="animalTableHeader">
-                                <th class="animalTableProperty">מספר חיה</th>
-                                <th class="animalTableProperty">שם החיה</th>
-                                <th class="animalTableProperty">כלוב</th>
-                                <th class="animalTableProperty">מספר הרגליים</th>
-                                <th class="garbageEmptyTableHeader"></th>
-                            </tr>
-                        </table>
+                    <div class="AnimalsScreen hidden">
+                        <table class="animalTable"></table>
 
                         <button class="saveAnimalButton" disabled>שמור</button>
                     </div>
 
-                    <div class="detailsScreen2 hidden">
-                        hi
+                    <div class="newAnimalScreen hidden">
+                        <form class="newAnimalForm" onsubmit="return false">
+                            <h1>הכנס פרטי חיה חדשה:</h1>
+                            <div class="inputProperty">
+                                <label class="inputPropertyLabel" for="id">מספר חיה: </label>
+                                <input class="inputPropertyBox" type="text" name="id">
+                            </div>
+                            <div class="inputProperty">
+                                <label class="inputPropertyLabel" for="name">שם החיה: </label>
+                                <input class="inputPropertyBox" type="text" name="name">
+                            </div>
+                            <div class="inputProperty">
+                                <label class="inputPropertyLabel" for="cageId">כלוב: </label>
+                                <select class="inputPropertyBox cageSelect pointed" name="cageId"></select>
+                            </div>
+                            <div class="inputProperty">
+                                <label class="inputPropertyLabel" for="legs">מספר רגליים: </label>
+                                <input class="inputPropertyBox" type="number" name="legs">
+                            </div>
+                            <div class="inputProperty">
+                                <input class="inputPropertySubmit" type="submit" value="שלח">
+                            </div>
+                        </form>
                     </div>
                 </div>
 
                 <div class="specificDetails">
                     <h1 class="detailsHeader">פרטים ספציפיים:</h1>
-                    
+
                     <div class="specificAnimalDetails"></div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

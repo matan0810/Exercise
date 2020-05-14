@@ -1,7 +1,7 @@
-cages = [
+let cages = [
     {
         'id': 1,
-        'name': 'Fistook`s Home'
+        'name': 'At Home'
     },
     {
         'id': 2,
@@ -13,7 +13,7 @@ cages = [
     }
 ]
 
-animals = [
+let animals = [
     {
         'id': 1,
         'name': 'רוס',
@@ -31,22 +31,15 @@ animals = [
         'name': 'פיבי',
         'cageId': 3,
         'legs': 3
-    },
-    {
-        'id': 4,
-        'name': 'ברני',
-        'cageId': 2,
-        'legs': 0
-    },
+    }
 ]
 
 window.onload = () => {
     showTime();
-    loadTable();
+    updateTable();
     sideBarHandle()
-    garbageIconHandle();
-    rowDeleteHandle();
-    specificDetailsHandle();
+    updateCageForm();
+    handleNewAnimalSubmit();
 };
 
 // Starts or stops the clock interval
@@ -99,23 +92,39 @@ sideBarHandle = () => {
     });
 }
 
-loadTable = () => {
+updateTable = () => {
+    $('.animalTable').empty();
+
+    let rowToAdd = `<tr class="animalTableHeader">
+        <th class="animalTableProperty">מספר חיה</th>
+        <th class="animalTableProperty">שם החיה</th>
+        <th class="animalTableProperty">כלוב</th>
+        <th class="animalTableProperty">מספר הרגליים</th>
+        <th class="garbageEmptyTableHeader"></th>
+    </tr>`
+
+    $('.animalTable').append(rowToAdd);
+
     animals.forEach(animal => {
-        rowToAdd = '<tr class="animalTableRow">' +
-            '<th class="animalTableCell">' + animal.id + '</th>' +
-            '<th class="animalTableCell">' + animal.name + '</th>' +
-            '<th class="animalTableCell">' + getCageName(animal.cageId) + '</th>' +
-            '<th class="animalTableCell">' + animal.legs + '</th>' +
-            '<th class="garbageTableCell"><img class="garbageIcon" src="./images/garbage.png"></th>' +
-            '</tr>';
+        rowToAdd = `<tr class="animalTableRow">
+            <th class="animalTableCell">${animal.id}</th>
+            <th class="animalTableCell">${animal.name}</th>
+            <th class="animalTableCell">${getCageName(animal.cageId)}</th>
+            <th class="animalTableCell">${animal.legs}</th>
+            <th class="garbageTableCell"><img class="garbageIcon" src="./images/garbage.png"></th>
+            </tr>`;
 
         $('.animalTable').append(rowToAdd);
     });
+
+    rowDeleteHandle();
+    garbageIconHandle();
+    specificDetailsHandle();
 }
 
 getCageName = (cageId) => {
     wantedCage = cages.find((cage) => cage.id == cageId);
-
+    
     return wantedCage.name;
 }
 
@@ -134,7 +143,7 @@ garbageIconHandle = () => {
         $(this).closest('tr').toggleClass("removedRow");
 
         if (!$(".animalTableRow").hasClass('removedRow')) {
-            $('.saveAnimalButton').attr('disabled', 'disabled'); s
+            $('.saveAnimalButton').attr('disabled', 'disabled');
         }
         else {
             $('.saveAnimalButton').removeAttr('disabled');
@@ -171,5 +180,25 @@ specificDetailsHandle = () => {
          ${getCageName(wantedAnimal.cageId)}, מספר רגליים לחיה: ${wantedAnimal.legs}`
 
         $('.specificAnimalDetails').html(textToAdd);
+    });
+}
+
+updateCageForm = () => {
+    cages.forEach(cage => {
+        cageToAdd = `<option value="${cage.id}">${cage.name}</option>`
+        $('.cageSelect').append(cageToAdd);
+    });
+}
+
+handleNewAnimalSubmit = () => {
+    $(".newAnimalForm").submit(function () {
+        newAnimal = {}
+        $(".inputPropertyBox").each(function () {
+            newAnimal[$(this).attr("name")] = $(this).val();
+        })
+        
+        animals.push(newAnimal);
+        
+        updateTable();
     });
 }
