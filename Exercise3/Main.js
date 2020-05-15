@@ -178,7 +178,7 @@ specificDetailsHandle = () => {
     $('.animalTableCell').click(function () {
         $('.chosenRow').removeClass('chosenRow');
         $(this).parent().addClass('chosenRow');
-        
+
         let wantedAnimal = getAnimalById($(this).parent().children().first().text());
 
         textToAdd = `<p class="specificAnimalHeader">נבחרה חיה מספר ${wantedAnimal.id}</p>` +
@@ -198,19 +198,29 @@ updateCageForm = () => {
 
 handleNewAnimalSubmit = () => {
     $(".newAnimalForm").submit(function () {
-        newAnimal = {}
-        $(".inputPropertyBox").each(function () {
-            newAnimal[$(this).attr("name")] = $(this).val();
-        })
+       // debugger
+        if (!validateId($(".inputPropertyBox").first().val())) {
+            alert("מספר החיה לא תקין או כבר קיים")
+        }
+        else {
+            newAnimal = {}
+            $(".inputPropertyBox").each(function () {
+                newAnimal[$(this).attr("name")] = $(this).val();
+            })
 
-        animals.push(newAnimal);
+            animals.push(newAnimal);
 
-        updateTable();
+            updateTable();
 
-        $('.visible').addClass('hidden');
-        $('.visible').removeClass('visible');
+            $('.visible').addClass('hidden');
+            $('.visible').removeClass('visible');
 
-        $('.animalsScreen').removeClass('hidden');
-        $('.animalsScreen').addClass('visible');
+            $('.animalsScreen').removeClass('hidden');
+            $('.animalsScreen').addClass('visible');
+        }
     });
+}
+
+validateId = (id) => {
+    return ((id) &&!isNaN(id)) && (getAnimalById(id) == undefined)
 }

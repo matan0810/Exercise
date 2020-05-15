@@ -41,12 +41,12 @@
                         <form class="newAnimalForm" onsubmit="return false">
                             <h1>הכנס פרטי חיה חדשה:</h1>
                             <div class="inputProperty">
-                                <label class="inputPropertyLabel" for="id">מספר חיה: </label>
-                                <input class="inputPropertyBox" type="text" name="id">
+                                <label class="inputPropertyLabel idInput" for="id">מספר חיה: </label>
+                                <input class="inputPropertyBox" required type="text" name="id">
                             </div>
                             <div class="inputProperty">
                                 <label class="inputPropertyLabel" for="name">שם החיה: </label>
-                                <input class="inputPropertyBox" type="text" name="name">
+                                <input class="inputPropertyBox" required type="text" name="name">
                             </div>
                             <div class="inputProperty">
                                 <label class="inputPropertyLabel" for="cageId">כלוב: </label>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="inputProperty">
                                 <label class="inputPropertyLabel" for="legs">מספר רגליים: </label>
-                                <input class="inputPropertyBox" type="number" name="legs">
+                                <input class="inputPropertyBox" required type="number" name="legs">
                             </div>
                             <div class="inputProperty">
                                 <input class="inputPropertySubmit" type="submit" value="שלח">
