@@ -81,6 +81,11 @@ adjustTime = (number) => {
 
 sideBarHandle = () => {
     $('.sideBarButton').click(function () {
+        if (!$(this).hasClass('currentScreen')) {
+            $('.currentScreen').removeClass('currentScreen');
+            $(this).addClass('currentScreen');
+        }
+
         $('.visible').addClass('hidden');
         $('.visible').removeClass('visible');
 
@@ -90,6 +95,7 @@ sideBarHandle = () => {
 
         // Clears the specific details box
         $('.specificAnimalDetails').empty();
+        $('.chosenRow').removeClass('chosenRow');
     });
 }
 

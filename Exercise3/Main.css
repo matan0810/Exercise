@@ -178,6 +178,18 @@ button {
     box-shadow: black 0px 0px 3px;
 }
 
+.currentScreen {
+    background: linear-gradient(to bottom, #336180 5%, #25405a 100%);
+    border: 1px solid black;
+}
+
+.currentScreen:hover {
+	background:linear-gradient(to bottom, #25405a 5%,  #336180 100%);
+    background-color:#408c99;
+    border: 1px solid black;
+    box-shadow: black 0px 0px 3px;
+}
+
 .animalTable {
     width: 80%;
     margin-top: 3vh;
