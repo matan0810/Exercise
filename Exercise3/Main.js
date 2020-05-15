@@ -114,7 +114,7 @@ updateTable = () => {
 
     animals.forEach(animal => {
         rowToAdd = `<tr class="animalTableRow">
-            <th class="animalTableCell">${animal.id}</th>
+            <th class="animalTableCell idCell">${animal.id}</th>
             <th class="animalTableCell">${animal.name}</th>
             <th class="animalTableCell">${getCageName(animal.cageId)}</th>
             <th class="animalTableCell">${animal.legs}</th>
@@ -130,7 +130,7 @@ updateTable = () => {
 
 getCageName = (cageId) => {
     wantedCage = cages.find((cage) => cage.id == cageId);
-    
+
     return wantedCage.name;
 }
 
@@ -178,8 +178,8 @@ specificDetailsHandle = () => {
     $('.animalTableCell').click(function () {
         $('.chosenRow').removeClass('chosenRow');
         $(this).parent().addClass('chosenRow');
-
-        let wantedAnimal = getAnimalById($(this).siblings().first().text())
+        
+        let wantedAnimal = getAnimalById($(this).parent().children().first().text());
 
         textToAdd = `<p class="specificAnimalHeader">נבחרה חיה מספר ${wantedAnimal.id}</p>` +
             `<p>שם החיה: ${wantedAnimal.name}, נמצאת בכלוב:
@@ -202,12 +202,11 @@ handleNewAnimalSubmit = () => {
         $(".inputPropertyBox").each(function () {
             newAnimal[$(this).attr("name")] = $(this).val();
         })
-        
+
         animals.push(newAnimal);
-        
+
         updateTable();
 
-        // todo: make function
         $('.visible').addClass('hidden');
         $('.visible').removeClass('visible');
 
