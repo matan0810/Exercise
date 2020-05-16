@@ -198,7 +198,6 @@ updateCageForm = () => {
 
 handleNewAnimalSubmit = () => {
     $(".newAnimalForm").submit(function () {
-       // debugger
         if (!validateId($(".inputPropertyBox").first().val())) {
             alert("מספר החיה לא תקין או כבר קיים")
         }
