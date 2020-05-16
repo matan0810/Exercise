@@ -211,6 +211,9 @@ handleNewAnimalSubmit = () => {
             animals.push(newAnimal);
 
             updateTable();
+            
+            $('.currentScreen').removeClass('currentScreen');
+            $('.animalsScreenButton').addClass('currentScreen');
 
             $('.visible').addClass('hidden');
             $('.visible').removeClass('visible');
