@@ -1,10 +1,12 @@
 <template>
-  <v-app dir="rtl">
+  <v-app dir="rtl" class="app">
     <v-content>
       <v-container>
         <v-row>
           <v-col class="col-3">
-            <SideMenu />
+            <v-container>
+              <SideMenu />
+            </v-container>
           </v-col>
           <v-col class="col-9">
             <v-col>
@@ -29,9 +31,6 @@ export default {
   components: {
     SideMenu,
     ExtraDetails
-  },
-  data: () => {
-    //
   }
 };
 </script>

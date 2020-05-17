@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto">
-    <v-card-title class="cyan">תפריט</v-card-title>
+    <v-card-title class="teal accent-4 white--text">תפריט</v-card-title>
     <v-card-text class="text--primary mt-5">
       <v-list>
         <router-link
@@ -26,13 +26,16 @@
 
 <script>
 export default {
-  data: () => ({
-    items: [
-      ["mdi-email", "דואר נכנס", "/"],
-      ["mdi-email-outline", "דואר יוצא", "/outbox"],
-      ["mdi-close-box", "דואר זבל", "/spam"]
-    ]
-  })
+  name: "SideMenu",
+  data: () => {
+    return {
+      items: [
+        ["mdi-email", "דואר נכנס", "/"],
+        ["mdi-email-outline", "דואר יוצא", "/outbox"],
+        ["mdi-close-box", "דואר זבל", "/spam"]
+      ]
+    };
+  }
 };
 </script>
 
