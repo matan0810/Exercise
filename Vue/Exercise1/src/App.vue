@@ -1,22 +1,37 @@
 <template>
-  <div id="app">
-    <Menu msg="Welcome to Your Vue.js App"/>
-    <side-bar msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app dir="rtl">
+    <v-content>
+      <v-container>
+        <v-row>
+          <v-col class="col-3">
+            <SideMenu />
+          </v-col>
+          <v-col class="col-9">
+            <v-col>
+              <router-view />
+            </v-col>
+            <v-col>
+              <ExtraDetails />
+            </v-col>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import Menu from './components/Menu.vue'
-import SideBar from './components/SideBar.vue'
+import SideMenu from "./components/SideMenu.vue";
+import ExtraDetails from "./components/ExtraDetails.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Menu,
-    SideBar
+    SideMenu,
+    ExtraDetails
+  },
+  data: () => {
+    //
   }
-}
+};
 </script>
-
-<style>
-</style>
