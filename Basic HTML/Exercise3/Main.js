@@ -1,36 +1,36 @@
 let cages = [
     {
-        'id': 1,
-        'name': 'At Home'
+        "id": 1,
+        "name": "At Home"
     },
     {
-        'id': 2,
-        'name': 'Metzada'
+        "id": 2,
+        "name": "Metzada"
     },
     {
-        'id': 3,
-        'name': 'The Knesset'
+        "id": 3,
+        "name": "The Knesset"
     }
 ]
 
 let animals = [
     {
-        'id': 1,
-        'name': 'רוס',
-        'cageId': 2,
-        'legs': 2
+        "id": 1,
+        "name": "רוס",
+        "cageId": 2,
+        "legs": 2
     },
     {
-        'id': 2,
-        'name': 'צנדלר',
-        'cageId': 1,
-        'legs': 4
+        "id": 2,
+        "name": "צנדלר",
+        "cageId": 1,
+        "legs": 4
     },
     {
-        'id': 3,
-        'name': 'פיבי',
-        'cageId': 3,
-        'legs': 3
+        "id": 3,
+        "name": "פיבי",
+        "cageId": 3,
+        "legs": 3
     }
 ]
 
@@ -80,27 +80,27 @@ adjustTime = (number) => {
 }
 
 sideBarHandle = () => {
-    $('.sideBarButton').click(function () {
-        if (!$(this).hasClass('currentScreen')) {
-            $('.currentScreen').removeClass('currentScreen');
-            $(this).addClass('currentScreen');
+    $(".sideBarButton").click(function () {
+        if (!$(this).hasClass("currentScreen")) {
+            $(".currentScreen").removeClass("currentScreen");
+            $(this).addClass("currentScreen");
         }
 
-        $('.visible').addClass('hidden');
-        $('.visible').removeClass('visible');
+        $(".visible").addClass("hidden");
+        $(".visible").removeClass("visible");
 
-        let chosenScreen = $(this).attr('rel');
-        $("." + chosenScreen).removeClass('hidden');
-        $("." + chosenScreen).addClass('visible');
+        let chosenScreen = $(this).attr("id");
+        $("." + chosenScreen).removeClass("hidden");
+        $("." + chosenScreen).addClass("visible");
 
         // Clears the specific details box
-        $('.specificAnimalDetails').empty();
-        $('.chosenRow').removeClass('chosenRow');
+        $(".specificAnimalDetails").empty();
+        $(".chosenRow").removeClass("chosenRow");
     });
 }
 
 updateTable = () => {
-    $('.animalTable').empty();
+    $(".animalTable").empty();
 
     let rowToAdd = `<tr class="animalTableHeader">
         <th class="animalTableProperty">מספר חיה</th>
@@ -110,7 +110,7 @@ updateTable = () => {
         <th class="garbageEmptyTableHeader"></th>
     </tr>`
 
-    $('.animalTable').append(rowToAdd);
+    $(".animalTable").append(rowToAdd);
 
     animals.forEach(animal => {
         rowToAdd = `<tr class="animalTableRow">
@@ -121,7 +121,7 @@ updateTable = () => {
             <th class="garbageTableCell"><img class="garbageIcon" src="./images/garbage.png"></th>
             </tr>`;
 
-        $('.animalTable').append(rowToAdd);
+        $(".animalTable").append(rowToAdd);
     });
 
     garbageIconHandle();
@@ -146,38 +146,38 @@ removeAnimalById = (animalId) => {
 
 garbageIconHandle = () => {
     $(".garbageIcon").click(function () {
-        $(this).closest('tr').toggleClass("removedRow");
+        $(this).closest("tr").toggleClass("removedRow");
 
-        if (!$(".animalTableRow").hasClass('removedRow')) {
-            $('.saveAnimalButton').attr('disabled', 'disabled');
+        if (!$(".animalTableRow").hasClass("removedRow")) {
+            $(".saveAnimalButton").attr("disabled", "disabled");
         }
         else {
-            $('.saveAnimalButton').removeAttr('disabled');
+            $(".saveAnimalButton").removeAttr("disabled");
         }
     });
 }
 
 rowDeleteHandle = () => {
-    $('.saveAnimalButton').click(function () {
+    $(".saveAnimalButton").click(function () {
 
-        $('.removedRow').each(function () {
-            if ($(this).hasClass('chosenRow')) {
-                $('.specificAnimalDetails').empty();
+        $(".removedRow").each(function () {
+            if ($(this).hasClass("chosenRow")) {
+                $(".specificAnimalDetails").empty();
             }
 
             removeAnimalById($(this).children().first().text());
         });
 
-        $('.removedRow').remove();
+        $(".removedRow").remove();
 
-        $('.saveAnimalButton').attr('disabled', 'disabled');
+        $(".saveAnimalButton").attr("disabled", "disabled");
     });
 }
 
 specificDetailsHandle = () => {
-    $('.animalTableCell').click(function () {
-        $('.chosenRow').removeClass('chosenRow');
-        $(this).parent().addClass('chosenRow');
+    $(".animalTableCell").click(function () {
+        $(".chosenRow").removeClass("chosenRow");
+        $(this).parent().addClass("chosenRow");
 
         let wantedAnimal = getAnimalById($(this).parent().children().first().text());
 
@@ -185,14 +185,14 @@ specificDetailsHandle = () => {
             `<p>שם החיה: ${wantedAnimal.name}, נמצאת בכלוב:
          ${getCageName(wantedAnimal.cageId)}, מספר רגליים לחיה: ${wantedAnimal.legs}`
 
-        $('.specificAnimalDetails').html(textToAdd);
+        $(".specificAnimalDetails").html(textToAdd);
     });
 }
 
 updateCageForm = () => {
     cages.forEach(cage => {
         cageToAdd = `<option value="${cage.id}">${cage.name}</option>`
-        $('.cageSelect').append(cageToAdd);
+        $(".cageSelect").append(cageToAdd);
     });
 }
 
@@ -211,18 +211,18 @@ handleNewAnimalSubmit = () => {
 
             updateTable();
             
-            $('.currentScreen').removeClass('currentScreen');
-            $('.animalsScreenButton').addClass('currentScreen');
+            $(".currentScreen").removeClass("currentScreen");
+            $("#animalsScreen").addClass("currentScreen");
 
-            $('.visible').addClass('hidden');
-            $('.visible').removeClass('visible');
+            $(".visible").addClass("hidden");
+            $(".visible").removeClass("visible");
 
-            $('.animalsScreen').removeClass('hidden');
-            $('.animalsScreen').addClass('visible');
+            $(".animalsScreen").removeClass("hidden");
+            $(".animalsScreen").addClass("visible");
         }
     });
 }
 
 validateId = (id) => {
-    return ((id) &&!isNaN(id)) && (getAnimalById(id) == undefined)
+    return (id) && (!isNaN(id)) && (id > 0) && (getAnimalById(id) == undefined)
 }

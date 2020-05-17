@@ -22,11 +22,11 @@
 
         <div class="content row">
             <div class="sideBar column">
-                <button class="sideBarButton animalsScreenButton" rel='animalsScreen'>חיות</button>
-                <button class="sideBarButton"  rel='newAnimalScreen'>חיה חדשה</button>
-                <button class="sideBarButton" rel='detailsScreen3'>ביבי</button>
-                <button class="sideBarButton" rel='detailsScreen4'>בוגי</button>
-                <button class="sideBarButton" rel='detailsScreen5'>בוז'י</button>
+                <button class="sideBarButton" id="animalsScreen">חיות</button>
+                <button class="sideBarButton" id="newAnimalScreen">חיה חדשה</button>
+                <button class="sideBarButton" id="detailsScreen3">ביבי</button>
+                <button class="sideBarButton" id="detailsScreen4">בוגי</button>
+                <button class="sideBarButton" id="detailsScreen5">בוז'י</button>
             </div>
 
             <div class="detailsScreen column">
@@ -54,7 +54,7 @@
                             </div>
                             <div class="inputProperty">
                                 <label class="inputPropertyLabel" for="legs">מספר רגליים: </label>
-                                <input class="inputPropertyBox" required type="number" name="legs">
+                                <input class="inputPropertyBox" min="0" required type="number" name="legs">
                             </div>
                             <div class="inputProperty">
                                 <input class="inputPropertySubmit" type="submit" value="שלח">
