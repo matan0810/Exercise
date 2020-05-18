@@ -1,7 +1,7 @@
 <template>
   <v-app dir="rtl" class="app">
     <template>
-      <v-container fill-height>
+      <v-container px-8 py-4 fluid fill-height>
         <v-layout row>
           <v-flex pl-5 md3 xs3>
             <SideMenu style="height: 100%" />
