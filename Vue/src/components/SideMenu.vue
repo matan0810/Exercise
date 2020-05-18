@@ -1,8 +1,8 @@
 <template>
-  <v-card height="md-5">
+  <v-card class="mx-auto">
     <v-card-title class="teal accent-4 white--text">תפריט</v-card-title>
     <v-card-text class="text--primary mt-5">
-      <!-- <v-list>
+      <v-list>
         <router-link
           v-for="(item, i) in items"
           :key="i"
@@ -19,7 +19,7 @@
             </v-list-item-content>
           </v-list-item>
         </router-link>
-      </v-list> -->
+      </v-list>
     </v-card-text>
   </v-card>
 </template>
