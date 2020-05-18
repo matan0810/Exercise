@@ -1,7 +1,7 @@
 <template>
   <v-app dir="rtl" class="app">
     <template>
-      <v-container px-8 py-4 fluid fill-height>
+      <v-container class="light-blue lighten-5" px-8 py-4 fluid fill-height>
         <v-layout row>
           <v-flex pl-5 md3 xs3>
             <SideMenu style="height: 100%" />
@@ -11,7 +11,7 @@
               <v-flex style="height: 66%">
                 <Details />
               </v-flex>
-              <v-flex pt-3 style="height: 33%" v-if="this.showExtraDetails">
+              <v-flex pt-3 style="height: 34%" v-if="this.showExtraDetails">
                 <ExtraDetails style="height: 100%" />
               </v-flex>
             </v-layout>
@@ -33,10 +33,7 @@ export default {
   computed: {
     ...mapState(["currentPage"]),
     showExtraDetails: function() {
-      return (
-        this.currentPage.title === "דואר נכנס" ||
-        this.currentPage.title === "דואר יוצא"
-      );
+      return this.currentPage.title != "דואר זבל";
     }
   },
   components: {

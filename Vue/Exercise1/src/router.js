@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from './views/Home.vue'
+import Inbox from './views/Inbox.vue'
 import Outbox from './views/Outbox.vue'
 import Spam from './views/Spam.vue'
 
@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/',
     name: 'דואר נכנס',
-    component: Home
+    component: Inbox
   },
   {
     path: '/outbox',

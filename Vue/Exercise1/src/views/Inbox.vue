@@ -1,11 +1,11 @@
 <template>
-  <div class="home">
+  <div class="inbox">
     <v-card-text class="text--primary">.</v-card-text>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Home"
+  name: "Inbox"
 };
 </script>
