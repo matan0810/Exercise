@@ -1,25 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Outbox from '../views/Outbox.vue'
-import Spam from '../views/Spam.vue'
+import Home from './views/Home.vue'
+import Outbox from './views/Outbox.vue'
+import Spam from './views/Spam.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'דואר נכנס',
     component: Home
   },
   {
     path: '/outbox',
-    name: 'Outbox',
+    name: 'דואר יוצא',
     component: Outbox
   },
   {
     path: '/spam',
-    name: 'Spam',
+    name: 'דואר זבל',
     component: Spam
   }
 ]

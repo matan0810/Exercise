@@ -8,11 +8,11 @@
           </v-flex>
           <v-flex pr-5 md9 xs9>
             <v-layout column style="height: 100%">
-              <v-flex pb-2 style="height: 66%">
-                <router-view style="height: 100%" />
+              <v-flex style="height: 66%">
+                <Details />
               </v-flex>
-              <v-flex style="height: 33%">
-                <ExtraDetails style="height: 100%" />
+              <v-flex pt-3 style="height: 33%" v-if="true" >
+                <ExtraDetails style="height: 100%"/>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -24,16 +24,17 @@
 
 <script>
 import SideMenu from "./components/SideMenu.vue";
+import Details from "./components/Details.vue";
 import ExtraDetails from "./components/ExtraDetails.vue";
 
 export default {
   name: "App",
   components: {
     SideMenu,
+    Details,
     ExtraDetails
   },
   data: () => ({
-    lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
   })
 };
 </script>

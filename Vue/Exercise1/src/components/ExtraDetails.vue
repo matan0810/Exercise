@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title class="teal accent-4 white--text">מידע נוסף</v-card-title>
+    <v-card-title class="teal accent-4 white--text headline pr-12">מידע נוסף</v-card-title>
     <v-card-text class="text--primary">
       <div></div>
     </v-card-text>
