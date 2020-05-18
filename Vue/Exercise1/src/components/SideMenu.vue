@@ -1,12 +1,13 @@
 <template>
-  <v-card height="md-5">
+  <v-card>
     <v-card-title class="teal accent-4 white--text">תפריט</v-card-title>
-    <v-card-text class="text--primary mt-5">
-      <!-- <v-list>
+    <v-card-text class="text--primary">
+      <v-list>
         <router-link
           v-for="(item, i) in items"
           :key="i"
           :to="item.route"
+          :title="item.title"
           style="text-decoration: none"
         >
           <v-list-item link>
@@ -19,7 +20,7 @@
             </v-list-item-content>
           </v-list-item>
         </router-link>
-      </v-list> -->
+      </v-list>
     </v-card-text>
   </v-card>
 </template>
@@ -31,8 +32,8 @@ export default {
     return {
       items: [
         { icon: "mdi-email", title: "דואר נכנס", route: "/" },
-        { icon: "mdi-email-outline", title: "דואר יוצא", route: "/outbox" },
-        { icon: "mdi-close-box", title: "דואר זבל", route: "/spam" }
+        { icon: "mdi-email-outline", title: "דואר יוצא", route: "/outbox" }
+        // { icon: "mdi-close-box", title: "דואר זבל", route: "/spam" }
       ]
     };
   }

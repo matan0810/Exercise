@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title class="teal accent-4 white--text">יוסי</v-card-title>
     <v-card-text class="text--primary mt-5">
-      <div>-</div>
+      <div></div>
     </v-card-text>
   </v-card>
 </template>
