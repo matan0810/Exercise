@@ -10,7 +10,7 @@
             :to="item.route"
             style="text-decoration: none"
           >
-            <v-list-item v-bind:class="{ active: true }" link>
+            <v-list-item link>
               <v-list-item-content pr-3>
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item-content>
@@ -31,21 +31,23 @@ export default {
     return {
       sideBarItems: [
         { id: 0, title: "דואר נכנס", route: "/" },
-        { id: 1, title: "דואר יוצא", route: "/outbox" }
-        // { id: 2, title: "דואר זבל", route: "/spam" }
+        { id: 1, title: "דואר יוצא", route: "/outbox" },
+        { id: 2, title: "דואר זבל", route: "/spam" }
       ],
       currentItem: 0
     };
   },
   methods: {
-    ...mapActions(["changePageTitle"]),
+    ...mapActions(["changePage"]),
     getItemById: function(id) {
       return this.sideBarItems.find(item => item.id == id);
     }
   },
   watch: {
     currentItem: function() {
-      this.changePageTitle(this.getItemById(this.currentItem).title);
+      if (this.currentItem != undefined) {
+        this.changePage(this.getItemById(this.currentItem));
+      }
     }
   }
 };

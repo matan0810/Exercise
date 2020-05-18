@@ -1,6 +1,6 @@
 <template>
   <v-card style="height: 100%">
-    <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentPageTitle }}</v-card-title>
+    <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentPage.title }}</v-card-title>
     <v-card-text class="text--primary mt-1">
       <router-view style="height: 100%" />
     </v-card-text>
@@ -13,7 +13,7 @@ import { mapState } from "vuex";
 export default {
   name: "Details",
   computed: {
-    ...mapState(["currentPageTitle"])
+    ...mapState(["currentPage"])
   }
 };
 </script>

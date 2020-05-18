@@ -5,16 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentPageTitle: "דואר נכנס"
+    currentPage: { id: 0, title: "דואר נכנס", route: "/" }
   },
   mutations: {
-    changePageTitle(state, title) {
-      state.currentPageTitle = title;
+    changePage(state, page) {
+      state.currentPage = page;
     }
   },
   actions: {
-    changePageTitle(context, title) {
-      context.commit('changePageTitle', title);
+    changePage(context, page) {
+      context.commit('changePage', page);
     }
   }
 })

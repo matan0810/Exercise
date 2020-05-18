@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <v-card-text class="text--primary">גגג</v-card-text>
+    <v-card-text class="text--primary">.</v-card-text>
   </div>
 </template>
 

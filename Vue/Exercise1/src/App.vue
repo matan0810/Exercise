@@ -11,8 +11,8 @@
               <v-flex style="height: 66%">
                 <Details />
               </v-flex>
-              <v-flex pt-3 style="height: 33%" v-if="true" >
-                <ExtraDetails style="height: 100%"/>
+              <v-flex pt-3 style="height: 33%" v-if="this.showExtraDetails">
+                <ExtraDetails style="height: 100%" />
               </v-flex>
             </v-layout>
           </v-flex>
@@ -23,18 +23,26 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import SideMenu from "./components/SideMenu.vue";
 import Details from "./components/Details.vue";
 import ExtraDetails from "./components/ExtraDetails.vue";
 
 export default {
   name: "App",
+  computed: {
+    ...mapState(["currentPage"]),
+    showExtraDetails: function() {
+      return (
+        this.currentPage.title === "דואר נכנס" ||
+        this.currentPage.title === "דואר יוצא"
+      );
+    }
+  },
   components: {
     SideMenu,
     Details,
     ExtraDetails
-  },
-  data: () => ({
-  })
+  }
 };
 </script>
