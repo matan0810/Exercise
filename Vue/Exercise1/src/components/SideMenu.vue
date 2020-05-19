@@ -3,7 +3,7 @@
     <v-card-title class="teal accent-4 white--text headline pr-12">תפריט</v-card-title>
     <v-card-text class="text--primary">
       <v-list rounded>
-        <v-list-item-group v-model="currentItem" color="primary">
+        <v-list-item-group v-model="currentItem" color="primary" mandatory>
           <v-list-item v-for="(item, i) in sideBarItems" :key="i" link>
             <v-icon class="ma-4">{{ item.icon }}</v-icon>
             <v-list-item-content>
