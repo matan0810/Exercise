@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import Inbox from "../views/Inbox.vue";
-import Outbox from "../views/Outbox.vue";
-import Spam from "../views/Spam.vue";
+import Inbox from "./Inbox.vue";
+import Outbox from "./Outbox.vue";
+import Spam from "./Spam.vue";
 
 export default {
   name: "Details",
