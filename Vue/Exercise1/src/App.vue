@@ -2,17 +2,23 @@
   <v-app>
     <v-content>
       <v-container class="light-blue lighten-5" fluid fill-height>
-        <v-row class="fullHeight">
-          <v-col class="col-3" pl-5>
-            <SideMenu @changeTitle="changeTitle" class="fullHeight" />
+        <v-row class="fullHeight pl-3">
+          <v-col class="col-3">
+            <v-container class="fullHeight">
+              <SideMenu class="fullHeight" @changeTitle="changeTitle" />
+            </v-container>
           </v-col>
-          <v-col class="col-9" fill-height pr-5>
-            <v-flex v-bind:class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
-              <Details :currentTitle="currentTitle" />
-            </v-flex>
-            <v-flex class="thirdHeight" pt-3 v-if="showExtraDetails">
-              <ExtraDetails class="fullHeight" />
-            </v-flex>
+          <v-col class="col-9">
+            <v-row v-bind:class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
+              <v-col>
+                <Details :currentTitle="currentTitle" />
+              </v-col>
+            </v-row>
+            <v-row class="thirdHeight" v-if="showExtraDetails">
+              <v-col>
+                <ExtraDetails class="fullHeight" />
+              </v-col>
+            </v-row>
           </v-col>
         </v-row>
       </v-container>
@@ -60,6 +66,6 @@ export default {
 }
 
 .thirdHeight {
-  height: 33%;
+  height: 34%;
 }
 </style>
