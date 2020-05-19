@@ -4,19 +4,12 @@
     <v-card-text class="text--primary">
       <v-list rounded>
         <v-list-item-group v-model="currentItem" color="primary">
-          <router-link
-            v-for="(item, i) in sideBarItems"
-            :key="i"
-            :to="item.route"
-            style="text-decoration: none"
-          >
-            <v-list-item link>
-              <v-icon class="ma-4">{{ item.icon }}</v-icon>
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </router-link>
+          <v-list-item v-for="(item, i) in sideBarItems" :key="i" link>
+            <v-icon class="ma-4">{{ item.icon }}</v-icon>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-card-text>
@@ -24,22 +17,19 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-
 export default {
   name: "SideMenu",
   data() {
     return {
       sideBarItems: [
-        { id: 0, title: "דואר נכנס", icon: "mdi-email", route: "/" },
-        { id: 1, title: "דואר יוצא", icon: "mdi-send", route: "/outbox" },
-        { id: 2, title: "דואר זבל", icon: "mdi-close", route: "/spam" }
+        { id: 0, title: "דואר נכנס", icon: "mdi-email" },
+        { id: 1, title: "דואר יוצא", icon: "mdi-send" },
+        { id: 2, title: "דואר זבל", icon: "mdi-close" }
       ],
       currentItem: 0
     };
   },
   methods: {
-    ...mapActions(["changePage"]),
     getItemById: function(id) {
       return this.sideBarItems.find(item => item.id == id);
     }
@@ -47,7 +37,7 @@ export default {
   watch: {
     currentItem: function() {
       if (this.currentItem != undefined) {
-        this.changePage(this.getItemById(this.currentItem));
+        this.$emit("changeTitle", this.getItemById(this.currentItem).title);
       }
     }
   }

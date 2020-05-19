@@ -4,12 +4,12 @@
       <v-container class="light-blue lighten-5" px-8 py-4 fluid fill-height>
         <v-layout row>
           <v-flex pl-5 md3 xs3>
-            <SideMenu style="height: 100%" />
+            <SideMenu @changeTitle="changeTitle($event)" style="height: 100%" />
           </v-flex>
           <v-flex pr-5 md9 xs9>
             <v-layout column style="height: 100%">
               <v-flex style="height: 66%">
-                <Details />
+                <Details :currentTitle="this.currentTitle" />
               </v-flex>
               <v-flex pt-3 style="height: 34%" v-if="this.showExtraDetails">
                 <ExtraDetails style="height: 100%" />
@@ -23,23 +23,32 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 import SideMenu from "./components/SideMenu.vue";
 import Details from "./components/Details.vue";
 import ExtraDetails from "./components/ExtraDetails.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      currentTitle: "דואר נכנס"
+    };
+  },
   computed: {
-    ...mapState(["currentPage"]),
     showExtraDetails: function() {
-      return this.currentPage.title != "דואר זבל";
+      return this.currentTitle != "דואר זבל";
     }
   },
   components: {
     SideMenu,
     Details,
     ExtraDetails
+  },
+  methods: {
+    changeTitle: function(newTitle) {
+      this.currentTitle = newTitle;
+    }
   }
 };
 </script>
+
