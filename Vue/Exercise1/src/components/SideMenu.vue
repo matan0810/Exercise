@@ -22,9 +22,9 @@ export default {
   data() {
     return {
       sideBarItems: [
-        { id: 0, title: "דואר נכנס", icon: "mdi-email" },
-        { id: 1, title: "דואר יוצא", icon: "mdi-send" },
-        { id: 2, title: "דואר זבל", icon: "mdi-close" }
+        { title: "דואר נכנס", icon: "mdi-email" },
+        { title: "דואר יוצא", icon: "mdi-send" },
+        { title: "דואר זבל", icon: "mdi-close" }
       ],
       currentItem: 0
     };
@@ -37,7 +37,7 @@ export default {
   watch: {
     currentItem: function() {
       if (this.currentItem != undefined) {
-        this.$emit("changeTitle", this.getItemById(this.currentItem).title);
+        this.$emit("changeTitle", this.sideBarItems[this.currentItem].title);
       }
     }
   }

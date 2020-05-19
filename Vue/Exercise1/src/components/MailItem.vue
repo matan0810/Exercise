@@ -28,22 +28,14 @@
 export default {
   name: "MailItem",
   props: {
-    // message: {
-    //   type: Object,
-    //   required: false // todo: true
-    // }
+    message: {
+      type: Object,
+      required: true
+    }
   },
   data: () => {
     return {
-      rating: 0,
-      message: {
-        id: 1,
-        title: "ארוחת בוצר הבוקר?",
-        sent: new Date(1489873794000),
-        from: "ישראל ישראלי",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam accumsan elementum ligula a venenatis. Ut bibendum ipsum sapien, quis laoreet quam molestie a. Donec eget quam nec elit posuere dapibus. Sed eleifend justo justo, in faucibus libero tincidunt in. Vestibulum tristique eget sapien non porta. Quisque leo mi, posuere sed ex ac, ullamcorper dignissim erat. Ut tempus sem ut volutpat maximus. Donec lobortis, nibh nec dignissim bibendum, nibh ante malesuada ligula, elementum viverra odio erat ac tortor. In gravida vehicula augue eu cursus. Cras nec enim rhoncus turpis blandit blandit. Praesent varius nunc ligula, vel vehicula sem porttitor nec. Ut ac nunc sed ex fringilla ultrices ac eu nulla. Sed at placerat ex. Pellentesque fermentum diam risus, vitae molestie neque suscipit ac. Mauris pretium vestibulum egestas."
-      }
+      rating: 0
     };
   },
   computed: {
