@@ -2,20 +2,19 @@
   <v-card style="height: 100%">
     <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentTitle }}</v-card-title>
     <v-card-text class="text--primary">
-      <v-card max-width="500" class="mx-auto">
         <v-list two-line>
           <v-list-item-group v-model="selected" active-class="grey--text">
             <template v-for="(item, index) in inboxMessages">
               <v-list-item :key="item.title">
                 <template v-slot:default="{ active }">
                   <v-list-item-content>
-                    <v-list-item-title v-text="item.from"></v-list-item-title>
-                    <v-list-item-subtitle class="text--primary" v-text="item.title"></v-list-item-subtitle>
-                    <v-list-item-subtitle v-text="item.content"></v-list-item-subtitle>
+                    <v-list-item-title>{{ item.from }}</v-list-item-title>
+                    <v-list-item-subtitle class="text--primary">{{ item.title }}</v-list-item-subtitle>
+                    <v-list-item-subtitle>{{ item.content }}</v-list-item-subtitle>
                   </v-list-item-content>
 
                   <v-list-item-action>
-                    <v-list-item-action-text v-text="item.sent"></v-list-item-action-text>
+                    <v-list-item-action-text>{{ item.sent }}</v-list-item-action-text>
                     <v-icon v-if="!active" color="grey lighten-1">mdi-star-outline</v-icon>
                     <v-icon v-else color="yellow">mdi-star</v-icon>
                   </v-list-item-action>
@@ -26,7 +25,6 @@
             </template>
           </v-list-item-group>
         </v-list>
-      </v-card>
       <!-- <Inbox :Messages="inboxMessages" v-if="currentTitle==='דואר נכנס'" />
       <Outbox v-else-if="currentTitle==='דואר יוצא'" />
       <Spam v-else-if="currentTitle==='דואר זבל'" />-->
