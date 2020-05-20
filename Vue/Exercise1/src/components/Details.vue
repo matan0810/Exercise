@@ -2,7 +2,7 @@
   <v-card class="fullHeight">
     <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentTitle }}</v-card-title>
     <v-card-text
-      v-bind:class="[extraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
+      :class="[extraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
       class="overflow-y-auto text--primary"
     >
       <MailList :messages="currentMessages" />

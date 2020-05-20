@@ -9,7 +9,7 @@
             </v-container>
           </v-col>
           <v-col class="col-9">
-            <v-row v-bind:class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
+            <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
               <v-col>
                 <Details :extraDetails="showExtraDetails" :currentTitle="currentTitle" />
               </v-col>
