@@ -56,11 +56,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .fullHeight {
   height: 100%;
 }
+</style>
 
+<style scoped>
 .twoThirdsHeight {
   height: 66%;
 }

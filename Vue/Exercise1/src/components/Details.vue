@@ -221,10 +221,6 @@ export default {
 </script>
 
 <style scoped>
-.fullHeight {
-  height: 100%;
-}
-
 .fullDetailsHeight {
   max-height: 81vh;
   height: 100%;
