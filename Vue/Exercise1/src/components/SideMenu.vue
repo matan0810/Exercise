@@ -30,7 +30,13 @@ export default {
   },
   methods: {
     changeTitle: function(event) {
-      this.$emit("changeTitle", event.target.textContent);
+      let newTitle = event.target.textContent;
+
+      if (!newTitle) {
+        newTitle = event.target.nextElementSibling.textContent;
+      }
+
+      this.$emit("changeTitle", newTitle);
     }
   }
 };
