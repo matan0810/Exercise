@@ -11,7 +11,7 @@
           <v-col class="col-9">
             <v-row v-bind:class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
               <v-col>
-                <Details :currentTitle="currentTitle" />
+                <Details :extraDetails="showExtraDetails" :currentTitle="currentTitle" />
               </v-col>
             </v-row>
             <v-row class="thirdHeight" v-if="showExtraDetails">

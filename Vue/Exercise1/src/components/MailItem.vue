@@ -1,27 +1,20 @@
 <template>
-  <v-card tile>
-    <v-list-item>
+  <v-list-item>
+    <template v-slot:default="{ active }">
       <v-list-item-content>
-        <v-list-item-title class="font-weight-bold subtitle-1">{{ message.from }}</v-list-item-title>
-        <v-list-item-subtitle class="py-1 text--primary">{{ message.title }}</v-list-item-subtitle>
+        <v-list-item-title>{{ message.from }}</v-list-item-title>
+        <v-list-item-subtitle class="text--primary">{{ message.title }}</v-list-item-subtitle>
         <v-list-item-subtitle>{{ contentShow }}</v-list-item-subtitle>
       </v-list-item-content>
 
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
-        <!-- <v-icon v-if="!active" color="grey lighten-1">mdi-star</v-icon>
-        <v-icon v-else color="yellow">mdi-star-outline</v-icon>-->
-        <v-rating
-          v-model="rating"
-          :length="1"
-          :clearable="true"
-          color="yellow darken-1"
-          background-color="yellow darken-1"
-        ></v-rating>
+        <v-icon v-if="!active" color="grey lighten-1">mdi-star-outline</v-icon>
+        <v-icon v-else color="yellow">mdi-star</v-icon>
       </v-list-item-action>
-    </v-list-item>
-    <v-divider class="pb-1" />
-  </v-card>
+    </template>
+    <v-divider />
+  </v-list-item>
 </template>
 
 <script>
