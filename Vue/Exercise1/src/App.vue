@@ -1,24 +1,28 @@
 <template>
-  <v-app dir="rtl" class="app">
-    <template>
-      <v-container class="light-blue lighten-5" px-8 py-4 fluid fill-height>
-        <v-layout row>
-          <v-flex pl-5 md3 xs3>
-            <SideMenu @changeTitle="changeTitle($event)" style="height: 100%" />
-          </v-flex>
-          <v-flex pr-5 md9 xs9>
-            <v-layout column style="height: 100%">
-              <v-flex style="height: 66%">
-                <Details :currentTitle="this.currentTitle" />
-              </v-flex>
-              <v-flex pt-3 style="height: 34%" v-if="this.showExtraDetails">
-                <ExtraDetails style="height: 100%" />
-              </v-flex>
-            </v-layout>
-          </v-flex>
-        </v-layout>
+  <v-app>
+    <v-content>
+      <v-container class="light-blue lighten-5" fluid fill-height>
+        <v-row class="fullHeight pl-3">
+          <v-col class="col-3">
+            <v-container class="fullHeight">
+              <SideMenu class="fullHeight" @changeTitle="changeTitle" />
+            </v-container>
+          </v-col>
+          <v-col class="col-9">
+            <v-row v-bind:class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
+              <v-col>
+                <Details :currentTitle="currentTitle" />
+              </v-col>
+            </v-row>
+            <v-row class="thirdHeight" v-if="showExtraDetails">
+              <v-col>
+                <ExtraDetails class="fullHeight" />
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
       </v-container>
-    </template>
+    </v-content>
   </v-app>
 </template>
 
@@ -52,3 +56,16 @@ export default {
 };
 </script>
 
+<style scoped>
+.fullHeight {
+  height: 100%;
+}
+
+.twoThirdsHeight {
+  height: 66%;
+}
+
+.thirdHeight {
+  height: 34%;
+}
+</style>

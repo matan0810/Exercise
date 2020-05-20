@@ -33,10 +33,6 @@
 </template>
 
 <script>
-// import Inbox from "./Inbox.vue";
-// import Outbox from "./Outbox.vue";
-// import Spam from "./Spam.vue";
-
 export default {
   name: "Details",
   data() {
@@ -94,11 +90,6 @@ export default {
       type: String,
       required: true
     }
-  },
-  components: {
-    // Inbox,
-    // Outbox,
-    // Spam
   }
 };
 </script>
