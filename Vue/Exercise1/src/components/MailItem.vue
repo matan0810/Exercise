@@ -1,20 +1,22 @@
 <template>
-  <v-list-item>
-    <template v-slot:default="{ active }">
+  <div>
+    <v-list-item>
       <v-list-item-content>
         <v-list-item-title>{{ message.from }}</v-list-item-title>
-        <v-list-item-subtitle class="text--primary">{{ message.title }}</v-list-item-subtitle>
+        <v-list-item-subtitle>{{ message.title }}</v-list-item-subtitle>
         <v-list-item-subtitle>{{ contentShow }}</v-list-item-subtitle>
       </v-list-item-content>
 
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
-        <v-icon v-if="!active" color="grey lighten-1">mdi-star-outline</v-icon>
-        <v-icon v-else color="yellow">mdi-star</v-icon>
+        <v-icon
+          @click="favorite = !favorite"
+          :color="favorite ? 'yellow' :'grey lighten-1'"
+        >mdi-star</v-icon>
       </v-list-item-action>
-    </template>
+    </v-list-item>
     <v-divider />
-  </v-list-item>
+  </div>
 </template>
 
 <script>
@@ -28,7 +30,7 @@ export default {
   },
   data: () => {
     return {
-      rating: 0
+      favorite: false
     };
   },
   computed: {
