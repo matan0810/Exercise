@@ -5,20 +5,36 @@
       :class="[extraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
       class="overflow-y-auto text--primary"
     >
-      <MailList @showDetails="showDetails" :messages="currentMessages" />
+      <component :is="currentBox" @showDetails="showDetails" :messages="currentMessages" />
     </v-card-text>
   </v-card>
 </template>
 
 <script>
-import MailList from "./MailList.vue";
+import Inbox from "./Inbox.vue";
+import Outbox from "./Outbox.vue";
+import Spam from "./Spam.vue";
 
 export default {
   name: "Details",
   components: {
-    MailList
+    Inbox,
+    Outbox,
+    Spam
   },
   computed: {
+    currentBox: function() {
+      let currComponent = [];
+      if (this.currentTitle === "דואר נכנס") {
+        currComponent = Inbox;
+      } else if (this.currentTitle === "דואר יוצא") {
+        currComponent = Outbox;
+      } else if (this.currentTitle === "דואר זבל") {
+        currComponent = Spam;
+      }
+
+      return currComponent;
+    },
     currentMessages: function() {
       let messegesList = [];
       if (this.currentTitle === "דואר נכנס") {

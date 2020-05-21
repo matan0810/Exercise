@@ -57,7 +57,7 @@ export default {
       } else if (7 >= daysDiff && daysDiff > 2) {
         lineToShow = daysDiff + " ימים";
       } else if (daysDiff == 2) {
-        lineToShow = "יומייים";
+        lineToShow = "יומיים";
       } else if (daysDiff == 1) {
         lineToShow = "אתמול";
       } else if (hoursDiff > 2) {

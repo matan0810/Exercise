@@ -1,7 +1,7 @@
 <template>
   <div class="mailList">
     <v-list two-line>
-      <v-list-item-group color="orange">
+      <v-list-item-group v-model="selected" color="orange">
         <MailItem
           @itemClick="itemClick"
           v-for="message in messages"
