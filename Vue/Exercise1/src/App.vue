@@ -11,12 +11,22 @@
           <v-col class="col-9">
             <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
               <v-col>
-                <Details :extraDetails="showExtraDetails" :currentTitle="currentTitle" />
+                <Details
+                  @showDetails="extraDetails"
+                  :extraDetails="showExtraDetails"
+                  :currentTitle="currentTitle"
+                />
               </v-col>
             </v-row>
             <v-row class="thirdHeight" v-if="showExtraDetails">
               <v-col>
-                <ExtraDetails class="fullHeight" />
+                <ExtraDetails class="fullHeight">
+                  <div>
+                    <h3 class="pt-3">{{ extraDetailsTitle }}</h3>
+                    <h5 class="pt-2">{{ extraDetailsFrom }}</h5>
+                    <p>{{ extraDetailsContent }}</p>
+                  </div>
+                </ExtraDetails>
               </v-col>
             </v-row>
           </v-col>
@@ -35,7 +45,10 @@ export default {
   name: "App",
   data() {
     return {
-      currentTitle: "דואר נכנס"
+      currentTitle: "דואר נכנס",
+      extraDetailsTitle: "",
+      extraDetailsFrom: "",
+      extraDetailsContent: ""
     };
   },
   computed: {
@@ -51,6 +64,11 @@ export default {
   methods: {
     changeTitle: function(newTitle) {
       this.currentTitle = newTitle;
+    },
+    extraDetails: function(message) {
+      this.extraDetailsTitle = `נושא: ${message.title}`;
+      this.extraDetailsFrom = `נשלח על ידי: ${message.from}`;
+      this.extraDetailsContent = `תוכן: ${message.content}`;
     }
   }
 };

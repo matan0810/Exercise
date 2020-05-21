@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-list-item>
+    <v-list-item @click="itemClick">
       <v-list-item-content>
         <v-list-item-title>{{ message.from }}</v-list-item-title>
         <v-list-item-subtitle>{{ message.title }}</v-list-item-subtitle>
@@ -77,6 +77,9 @@ export default {
   methods: {
     timeDiff: function(date) {
       return new Date(new Date() - date);
+    },
+    itemClick: function() {
+      this.$emit("itemClick", this.message);
     }
   }
 };

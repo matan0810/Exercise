@@ -5,7 +5,7 @@
       :class="[extraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
       class="overflow-y-auto text--primary"
     >
-      <MailList :messages="currentMessages" />
+      <MailList @showDetails="showDetails" :messages="currentMessages" />
     </v-card-text>
   </v-card>
 </template>
@@ -215,6 +215,11 @@ export default {
     extraDetails: {
       type: Boolean,
       required: true
+    }
+  },
+  methods: {
+    showDetails: function(message) {
+      this.$emit("showDetails", message);
     }
   }
 };
