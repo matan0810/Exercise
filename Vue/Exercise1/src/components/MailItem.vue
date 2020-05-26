@@ -9,10 +9,7 @@
 
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
-        <v-icon
-          @click="starClick"
-          :color="favorite ? 'yellow' :'grey lighten-1'"
-        >mdi-star</v-icon>
+        <v-icon @click="starClick" :color="favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
       </v-list-item-action>
     </v-list-item>
     <v-divider />
@@ -83,8 +80,8 @@ export default {
     },
     starClick: function(event) {
       this.favorite = !this.favorite;
-      event.stopPropagation()
-}
+      event.stopPropagation();
+    }
   }
 };
 </script>
