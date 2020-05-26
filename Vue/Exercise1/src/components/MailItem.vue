@@ -10,7 +10,7 @@
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
         <v-icon
-          @click="favorite = !favorite"
+          @click="starClick"
           :color="favorite ? 'yellow' :'grey lighten-1'"
         >mdi-star</v-icon>
       </v-list-item-action>
@@ -80,7 +80,11 @@ export default {
     },
     itemClick: function() {
       this.$emit("itemClick", this.message);
-    }
+    },
+    starClick: function(event) {
+      this.favorite = !this.favorite;
+      event.stopPropagation()
+}
   }
 };
 </script>
