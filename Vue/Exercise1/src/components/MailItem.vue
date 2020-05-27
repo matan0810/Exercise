@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { bus } from "../main.js"
+
 export default {
   name: "MailItem",
   props: {
@@ -31,7 +33,7 @@ export default {
     };
   },
   computed: {
-    contentShow: function() {
+    contentShow() {
       let contentToShow = this.message.content;
 
       if (contentToShow.length > 40) {
@@ -40,17 +42,19 @@ export default {
 
       return contentToShow;
     },
-    sendTimeShow: function() {
+    sendTimeShow() {
       let lineToShow = "";
 
-      let daysDiff = new Date().getDate() - this.message.sent.getDate();
-      let hoursDiff = new Date().getHours() - this.message.sent.getHours();
+      let currentDate = new Date(this.message.sent);
+
+      let daysDiff = new Date().getDate() - currentDate.getDate();
+      let hoursDiff = new Date().getHours() - currentDate.getHours();
       if (
-        new Date().getYear() - this.message.sent.getYear() > 0 ||
-        new Date().getMonth() - this.message.sent.getMonth() > 0 ||
+        new Date().getYear() - currentDate.getYear() > 0 ||
+        new Date().getMonth() - currentDate.getMonth() > 0 ||
         daysDiff > 7
       ) {
-        lineToShow = this.message.sent;
+        lineToShow = currentDate;
       } else if (7 >= daysDiff && daysDiff > 2) {
         lineToShow = daysDiff + " ימים";
       } else if (daysDiff == 2) {
@@ -65,20 +69,20 @@ export default {
         lineToShow = "שעה";
       } else {
         lineToShow =
-          new Date().getMinutes() - this.message.sent.getMinutes() + " דקות";
+          new Date().getMinutes() - currentDate.getMinutes() + " דקות";
       }
 
       return lineToShow;
     }
   },
   methods: {
-    timeDiff: function(date) {
+    timeDiff(date) {
       return new Date(new Date() - date);
     },
-    itemClick: function() {
-      this.$emit("itemClick", this.message);
+    itemClick() {
+      bus.$emit("showDetails", this.message);
     },
-    starClick: function(event) {
+    starClick(event) {
       this.favorite = !this.favorite;
       event.stopPropagation();
     }

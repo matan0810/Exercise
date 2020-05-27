@@ -3,32 +3,11 @@
     <v-content>
       <v-container class="light-blue lighten-5" fluid fill-height>
         <v-row class="fullHeight pl-3">
-          <v-col class="col-3">
-            <v-container class="fullHeight">
-              <SideMenu class="fullHeight" @changeTitle="changeTitle" />
-            </v-container>
+          <v-col class="col-3 pa-6">
+            <SideMenu class="fullHeight" />
           </v-col>
           <v-col class="col-9">
-            <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
-              <v-col>
-                <Details
-                  @showDetails="extraDetails"
-                  :extraDetails="showExtraDetails"
-                  :currentTitle="currentTitle"
-                />
-              </v-col>
-            </v-row>
-            <v-row class="thirdHeight" v-if="showExtraDetails">
-              <v-col>
-                <ExtraDetails class="fullHeight">
-                  <div>
-                    <h3 class="pt-3">{{ extraDetailsTitle }}</h3>
-                    <h5 class="pt-2">{{ extraDetailsFrom }}</h5>
-                    <p>{{ extraDetailsContent }}</p>
-                  </div>
-                </ExtraDetails>
-              </v-col>
-            </v-row>
+            <Details :extraDetails="showExtraDetails" :currentTitle="currentTitle" />
           </v-col>
         </v-row>
       </v-container>
@@ -39,37 +18,31 @@
 <script>
 import SideMenu from "./components/SideMenu.vue";
 import Details from "./components/Details.vue";
-import ExtraDetails from "./components/ExtraDetails.vue";
+import { bus } from "./main.js";
 
 export default {
   name: "App",
   data() {
     return {
-      currentTitle: "דואר נכנס",
-      extraDetailsTitle: "",
-      extraDetailsFrom: "",
-      extraDetailsContent: ""
+      currentTitle: "דואר נכנס"
     };
   },
   computed: {
-    showExtraDetails: function() {
+    showExtraDetails() {
       return this.currentTitle != "דואר זבל";
     }
   },
   components: {
     SideMenu,
-    Details,
-    ExtraDetails
+    Details
   },
   methods: {
-    changeTitle: function(newTitle) {
+    changeTitle(newTitle) {
       this.currentTitle = newTitle;
-    },
-    extraDetails: function(message) {
-      this.extraDetailsTitle = `נושא: ${message.title}`;
-      this.extraDetailsFrom = `נשלח על ידי: ${message.from}`;
-      this.extraDetailsContent = `תוכן: ${message.content}`;
     }
+  },
+  created() {
+    bus.$on("changeTitle", this.changeTitle);
   }
 };
 </script>
@@ -77,15 +50,5 @@ export default {
 <style>
 .fullHeight {
   height: 100%;
-}
-</style>
-
-<style scoped>
-.twoThirdsHeight {
-  height: 66%;
-}
-
-.thirdHeight {
-  height: 34%;
 }
 </style>

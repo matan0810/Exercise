@@ -3,8 +3,7 @@
     <v-list two-line>
       <v-list-item-group v-model="selected" color="orange">
         <MailItem
-          @itemClick="itemClick"
-          v-for="message in messages"
+          v-for="message in inboxMessages"
           :message="message"
           :key="message.id"
         />
@@ -14,28 +13,19 @@
 </template>
 
 <script>
+import { inboxMessages } from "../data/mails.json";
 import MailItem from "./MailItem.vue";
 
 export default {
   name: "MailList",
   data() {
     return {
+      inboxMessages,
       selected: undefined
     };
   },
-  props: {
-    messages: {
-      type: Array,
-      required: true
-    }
-  },
   components: {
     MailItem
-  },
-  methods: {
-    itemClick: function(message) {
-      this.$emit("showDetails", message);
-    }
   }
 };
 </script>

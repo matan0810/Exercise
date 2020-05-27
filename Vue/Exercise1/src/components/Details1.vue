@@ -1,28 +1,16 @@
 <template>
-  <div>
-    <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
-      <v-col>
-        <v-card class="fullHeight">
-          <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentTitle }}</v-card-title>
-          <v-card-text
-            :class="[extraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
-            class="overflow-y-auto text--primary"
-          >
-            <component :is="currentBox" />
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row class="thirdHeight" v-if="showExtraDetails">
-      <v-col>
-        <ExtraDetails class="fullHeight" />
-      </v-col>
-    </v-row>
-  </div>
+  <v-card class="fullHeight">
+    <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentTitle }}</v-card-title>
+    <v-card-text
+      :class="[extraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
+      class="overflow-y-auto text--primary"
+    >
+      <component :is="currentBox" />
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
-import ExtraDetails from "./ExtraDetails";
 import Inbox from "./Inbox.vue";
 import Outbox from "./Outbox.vue";
 import Spam from "./Spam.vue";
@@ -30,7 +18,6 @@ import Spam from "./Spam.vue";
 export default {
   name: "Details",
   components: {
-    ExtraDetails,
     Inbox,
     Outbox,
     Spam
@@ -59,9 +46,6 @@ export default {
       }
 
       return messegesList;
-    },
-    showExtraDetails() {
-      return this.currentTitle != "דואר זבל";
     }
   },
   props: {
@@ -78,14 +62,6 @@ export default {
 </script>
 
 <style scoped>
-.twoThirdsHeight {
-  height: 66%;
-}
-
-.thirdHeight {
-  height: 34%;
-}
-
 .fullDetailsHeight {
   max-height: 81vh;
   height: 100%;

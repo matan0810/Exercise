@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { bus } from "../main.js"
+
 export default {
   name: "SideMenu",
   data() {
@@ -29,14 +31,14 @@ export default {
     };
   },
   methods: {
-    changeTitle: function(event) {
+    changeTitle(event) {
       let newTitle = event.target.textContent;
 
       if (!newTitle) {
         newTitle = event.target.nextElementSibling.textContent;
       }
 
-      this.$emit("changeTitle", newTitle);
+      bus.$emit("changeTitle", newTitle);
     }
   }
 };
