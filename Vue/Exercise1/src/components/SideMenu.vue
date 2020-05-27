@@ -24,8 +24,8 @@ export default {
   data() {
     return {
       sideBarItems: [
-        { title: "הודעה חדשה", icon: "mdi-email" },
-        { title: "דואר נכנס", icon: "fa-paper-plane" },
+        { title: "הודעה חדשה", icon: "mdi-email-outline" },
+        { title: "דואר נכנס", icon: "mdi-email" },
         { title: "דואר יוצא", icon: "mdi-send" },
         { title: "דואר זבל", icon: "mdi-delete" }
       ]
