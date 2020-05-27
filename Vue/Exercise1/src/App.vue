@@ -7,7 +7,7 @@
             <SideMenu class="fullHeight" />
           </v-col>
           <v-col class="col-9">
-            <Details :extraDetails="showExtraDetails" :currentTitle="currentTitle" />
+            <Details />
           </v-col>
         </v-row>
       </v-container>
@@ -18,31 +18,12 @@
 <script>
 import SideMenu from "./components/SideMenu.vue";
 import Details from "./components/Details.vue";
-import { bus } from "./main.js";
 
 export default {
   name: "App",
-  data() {
-    return {
-      currentTitle: "דואר נכנס"
-    };
-  },
-  computed: {
-    showExtraDetails() {
-      return this.currentTitle != "דואר זבל";
-    }
-  },
   components: {
     SideMenu,
     Details
-  },
-  methods: {
-    changeTitle(newTitle) {
-      this.currentTitle = newTitle;
-    }
-  },
-  created() {
-    bus.$on("changeTitle", this.changeTitle);
   }
 };
 </script>

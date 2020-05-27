@@ -1,10 +1,13 @@
 <template>
-  <v-card>
+  <v-card class="fullHeight">
     <v-card-title class="teal accent-4 white--text headline pr-12">מידע נוסף</v-card-title>
     <v-card-text class="overflow-y-auto extraDetailsHeight text--primary">
-      <h3 class="pt-3">נושא: {{ extraDetailsTitle }}</h3>
-      <h5 class="pt-2">נשלח על ידי: {{ extraDetailsFrom }}</h5>
-      <p>תוכן: {{ extraDetailsContent }}</p>
+      <div v-if="hasExtraDetails">
+        <h3 class="pt-3">נושא: {{ extraDetails.title }}</h3>
+        <v-divider />
+        <h5 class="pt-2">נשלח על ידי: {{ extraDetails.from }}</h5>
+        <p>תוכן: {{ extraDetails.content }}</p>
+      </div>
     </v-card-text>
   </v-card>
 </template>
@@ -16,16 +19,21 @@ export default {
   name: "ExtraDetails",
   data() {
     return {
-      extraDetailsTitle: "",
-      extraDetailsFrom: "",
-      extraDetailsContent: ""
+      hasExtraDetails: false,
+      extraDetails: {
+        title: "",
+        from: "",
+        content: ""
+      }
     };
   },
   methods: {
     addDetails(message) {
-      this.extraDetailsTitle = message.title;
-      this.extraDetailsFrom = message.from;
-      this.extraDetailsContent = message.content;
+      this.hasExtraDetails = true;
+
+      this.extraDetails.title = message.title;
+      this.extraDetails.from = message.from;
+      this.extraDetails.content = message.content;
     }
   },
   created() {

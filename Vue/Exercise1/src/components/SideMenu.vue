@@ -26,7 +26,7 @@ export default {
       sideBarItems: [
         { title: "דואר נכנס", icon: "mdi-email" },
         { title: "דואר יוצא", icon: "mdi-send" },
-        { title: "דואר זבל", icon: "mdi-close" }
+        { title: "דואר זבל", icon: "mdi-delete" }
       ]
     };
   },

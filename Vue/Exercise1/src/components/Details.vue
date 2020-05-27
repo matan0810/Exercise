@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="fullHeight">
     <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
       <v-col>
         <v-card class="fullHeight">
           <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentTitle }}</v-card-title>
           <v-card-text
-            :class="[extraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
+            :class="[showExtraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
             class="overflow-y-auto text--primary"
           >
             <component :is="currentBox" />
@@ -15,13 +15,14 @@
     </v-row>
     <v-row class="thirdHeight" v-if="showExtraDetails">
       <v-col>
-        <ExtraDetails class="fullHeight" />
+        <ExtraDetails />
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
+import { bus } from "../main.js";
 import ExtraDetails from "./ExtraDetails";
 import Inbox from "./Inbox.vue";
 import Outbox from "./Outbox.vue";
@@ -29,6 +30,11 @@ import Spam from "./Spam.vue";
 
 export default {
   name: "Details",
+  data() {
+    return {
+      currentTitle: "דואר נכנס"
+    };
+  },
   components: {
     ExtraDetails,
     Inbox,
@@ -64,15 +70,13 @@ export default {
       return this.currentTitle != "דואר זבל";
     }
   },
-  props: {
-    currentTitle: {
-      type: String,
-      required: true
-    },
-    extraDetails: {
-      type: Boolean,
-      required: true
+  methods: {
+    changeTitle(newTitle) {
+      this.currentTitle = newTitle;
     }
+  },
+  created() {
+    bus.$on("changeTitle", this.changeTitle);
   }
 };
 </script>
