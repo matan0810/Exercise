@@ -26,6 +26,7 @@ import ExtraDetails from "./ExtraDetails";
 import Inbox from "./Inbox.vue";
 import Outbox from "./Outbox.vue";
 import Spam from "./Spam.vue";
+import NewMessage from "./NewMessage.vue";
 import MailCard from "./MailCard.vue";
 
 export default {
@@ -40,6 +41,7 @@ export default {
     Inbox,
     Outbox,
     Spam,
+    NewMessage,
     MailCard
   },
   computed: {
@@ -51,6 +53,8 @@ export default {
         currComponent = Outbox;
       } else if (this.currentTitle === "דואר זבל") {
         currComponent = Spam;
+      } else if (this.currentTitle === "הודעה חדשה") {
+        currComponent = NewMessage;
       }
 
       return currComponent;

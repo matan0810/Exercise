@@ -1,5 +1,5 @@
 <template>
-  <div class="mailList">
+  <div>
     <v-list two-line>
       <v-list-item-group v-model="selected" color="light-green accent-4">
         <MailItem v-for="message in messages" :message="message" :key="message.id" />
