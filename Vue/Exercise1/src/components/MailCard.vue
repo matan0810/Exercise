@@ -1,7 +1,7 @@
 <template>
   <v-card class="fullHeight">
-    <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentTitle }}</v-card-title>
-    <component :is="currentComponent" :messages="currentMessages" />
+    <v-card-title class="teal accent-4 white--text headline pr-12">{{ title }}</v-card-title>
+    <slot></slot>
   </v-card>
 </template>
 
@@ -9,12 +9,8 @@
 export default {
   name: "MailCard",
   props: {
-    currentTitle: {
+    title: {
       type: String,
-      required: true
-    },
-    currentComponent: {
-      type: Boolean,
       required: true
     }
   }

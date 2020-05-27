@@ -1,7 +1,7 @@
 <template>
   <div class="mailList">
     <v-list two-line>
-      <v-list-item-group v-model="selected" color="orange">
+      <v-list-item-group v-model="selected" color="light-green accent-4">
         <MailItem
           v-for="message in inboxMessages"
           :message="message"

@@ -1,6 +1,5 @@
 <template>
-  <v-card class="fullHeight">
-    <v-card-title class="teal accent-4 white--text headline pr-12">מידע נוסף</v-card-title>
+  <MailCard :title="'מידע נוסף'">
     <v-card-text class="overflow-y-auto extraDetailsHeight text--primary">
       <div v-if="hasExtraDetails">
         <h3 class="pt-3">נושא: {{ extraDetails.title }}</h3>
@@ -9,14 +8,18 @@
         <p>תוכן: {{ extraDetails.content }}</p>
       </div>
     </v-card-text>
-  </v-card>
+  </MailCard>
 </template>
 
 <script>
 import { bus } from "../main.js";
+import MailCard from "./MailCard.vue";
 
 export default {
   name: "ExtraDetails",
+  components: {
+    MailCard
+  },
   data() {
     return {
       hasExtraDetails: false,

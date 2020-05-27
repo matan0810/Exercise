@@ -1,6 +1,5 @@
 <template>
-  <v-card>
-    <v-card-title class="teal accent-4 white--text headline pr-12">תפריט</v-card-title>
+  <MailCard :title="'תפריט'">
     <v-card-text class="text--primary">
       <v-list rounded>
         <v-list-item-group color="primary" mandatory>
@@ -13,11 +12,12 @@
         </v-list-item-group>
       </v-list>
     </v-card-text>
-  </v-card>
+  </MailCard>
 </template>
 
 <script>
-import { bus } from "../main.js"
+import { bus } from "../main.js";
+import MailCard from "./MailCard.vue";
 
 export default {
   name: "SideMenu",
@@ -30,6 +30,9 @@ export default {
       ]
     };
   },
+  components: {
+    MailCard
+  },  
   methods: {
     changeTitle(event) {
       let newTitle = event.target.textContent;

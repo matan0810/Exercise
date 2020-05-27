@@ -2,15 +2,14 @@
   <div class="fullHeight">
     <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
       <v-col>
-        <v-card class="fullHeight">
-          <v-card-title class="teal accent-4 white--text headline pr-12">{{ currentTitle }}</v-card-title>
+        <MailCard :title="currentTitle">
           <v-card-text
             :class="[showExtraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
             class="overflow-y-auto text--primary"
           >
             <component :is="currentBox" />
           </v-card-text>
-        </v-card>
+        </MailCard>
       </v-col>
     </v-row>
     <v-row class="thirdHeight" v-if="showExtraDetails">
@@ -27,6 +26,7 @@ import ExtraDetails from "./ExtraDetails";
 import Inbox from "./Inbox.vue";
 import Outbox from "./Outbox.vue";
 import Spam from "./Spam.vue";
+import MailCard from "./MailCard.vue";
 
 export default {
   name: "Details",
@@ -39,7 +39,8 @@ export default {
     ExtraDetails,
     Inbox,
     Outbox,
-    Spam
+    Spam,
+    MailCard
   },
   computed: {
     currentBox() {
