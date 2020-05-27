@@ -1,27 +1,22 @@
 <template>
-  <div class="mailList">
-    <v-list two-line>
-      <v-list-item-group v-model="selected" color="orange">
-        <MailItem v-for="message in spamMessages" :message="message" :key="message.id" />
-      </v-list-item-group>
-    </v-list>
+  <div class="spam">
+    <MailList :messages="spamMessages" />
   </div>
 </template>
 
 <script>
 import { spamMessages } from "../data/mails.json";
-import MailItem from "./MailItem.vue";
+import MailList from "./MailList.vue";
 
 export default {
-  name: "MailList",
+  name: "Spam",
   data() {
     return {
-      spamMessages,
-      selected: undefined
+      spamMessages
     };
   },
   components: {
-    MailItem
+    MailList
   }
 };
 </script>

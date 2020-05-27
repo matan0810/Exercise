@@ -1,31 +1,22 @@
 <template>
-  <div class="mailList">
-    <v-list two-line>
-      <v-list-item-group v-model="selected" color="light-green accent-4">
-        <MailItem
-          v-for="message in inboxMessages"
-          :message="message"
-          :key="message.id"
-        />
-      </v-list-item-group>
-    </v-list>
+  <div class="inbox">
+    <MailList :messages="inboxMessages" />
   </div>
 </template>
 
 <script>
 import { inboxMessages } from "../data/mails.json";
-import MailItem from "./MailItem.vue";
+import MailList from "./MailList.vue";
 
 export default {
-  name: "MailList",
+  name: "Inbox",
   data() {
     return {
-      inboxMessages,
-      selected: undefined
+      inboxMessages
     };
   },
   components: {
-    MailItem
+    MailList
   }
 };
 </script>

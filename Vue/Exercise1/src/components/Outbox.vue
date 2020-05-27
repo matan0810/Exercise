@@ -1,27 +1,22 @@
 <template>
-  <div class="mailList">
-    <v-list two-line>
-      <v-list-item-group v-model="selected" color="orange">
-        <MailItem v-for="message in outBoxMessages" :message="message" :key="message.id" />
-      </v-list-item-group>
-    </v-list>
+  <div class="outbox">
+    <MailList :messages="outboxMessages" />
   </div>
 </template>
 
 <script>
-import { outBoxMessages } from "../data/mails.json";
-import MailItem from "./MailItem.vue";
+import { outboxMessages } from "../data/mails.json";
+import MailList from "./MailList.vue";
 
 export default {
-  name: "MailList",
+  name: "Outbox",
   data() {
     return {
-      outBoxMessages,
-      selected: undefined
+      outboxMessages
     };
   },
   components: {
-    MailItem
+    MailList
   }
 };
 </script>

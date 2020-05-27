@@ -57,7 +57,7 @@
             "content": "Better call Saul!"
         }
     ],
-    "outBoxMessages": [
+    "outboxMessages": [
         {
             "id": 12,
             "title": "whats up",
