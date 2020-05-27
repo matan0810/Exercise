@@ -7,7 +7,9 @@
             :class="[showExtraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
             class="overflow-y-auto text--primary"
           >
-            <component :is="currentBox" />
+            <keep-alive>
+              <component :is="currentBox" />
+            </keep-alive>
           </v-card-text>
         </MailCard>
       </v-col>
@@ -33,7 +35,7 @@ export default {
   name: "Details",
   data() {
     return {
-      currentTitle: "דואר נכנס"
+      currentTitle: "הודעה חדשה"
     };
   },
   components: {
@@ -72,7 +74,9 @@ export default {
       return messegesList;
     },
     showExtraDetails() {
-      return this.currentTitle != "דואר זבל";
+      return (
+        this.currentTitle === "דואר נכנס" || this.currentTitle === "דואר יוצא"
+      );
     }
   },
   methods: {
