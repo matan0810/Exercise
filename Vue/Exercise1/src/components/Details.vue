@@ -7,10 +7,7 @@
             :class="[showExtraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
             class="overflow-y-auto text--primary"
           >
-            <Inbox v-show="currentTitle === 'דואר נכנס'" />
-            <Outbox v-show="currentTitle === 'דואר יוצא'" />
-            <Spam v-show="currentTitle === 'דואר זבל'" />
-            <NewMessage v-show="currentTitle === 'הודעה חדשה'" />
+            <router-view />
           </v-card-text>
         </MailCard>
       </v-col>
@@ -26,10 +23,10 @@
 <script>
 import { bus } from "../main.js";
 import ExtraDetails from "./ExtraDetails";
-import Inbox from "./Inbox.vue";
-import Outbox from "./Outbox.vue";
-import Spam from "./Spam.vue";
-import NewMessage from "./NewMessage.vue";
+// import Inbox from "./Inbox.vue";
+// import Outbox from "./Outbox.vue";
+// import Spam from "./Spam.vue";
+// import NewMessage from "./NewMessage.vue";
 import MailCard from "./MailCard.vue";
 
 export default {
@@ -41,27 +38,27 @@ export default {
   },
   components: {
     ExtraDetails,
-    Inbox,
-    Outbox,
-    Spam,
-    NewMessage,
+    // Inbox,
+    // Outbox,
+    // Spam,
+    // NewMessage,
     MailCard
   },
   computed: {
-    currentBox() {
-      let currComponent = [];
-      if (this.currentTitle === "דואר נכנס") {
-        currComponent = Inbox;
-      } else if (this.currentTitle === "דואר יוצא") {
-        currComponent = Outbox;
-      } else if (this.currentTitle === "דואר זבל") {
-        currComponent = Spam;
-      } else if (this.currentTitle === "הודעה חדשה") {
-        currComponent = NewMessage;
-      }
+    // currentBox() {
+    //   let currComponent = [];
+    //   if (this.currentTitle === "דואר נכנס") {
+    //     currComponent = Inbox;
+    //   } else if (this.currentTitle === "דואר יוצא") {
+    //     currComponent = Outbox;
+    //   } else if (this.currentTitle === "דואר זבל") {
+    //     currComponent = Spam;
+    //   } else if (this.currentTitle === "הודעה חדשה") {
+    //     currComponent = NewMessage;
+    //   }
 
-      return currComponent;
-    },
+    //   return currComponent;
+    // },
     showExtraDetails() {
       return (
         this.currentTitle === "דואר נכנס" || this.currentTitle === "דואר יוצא"
