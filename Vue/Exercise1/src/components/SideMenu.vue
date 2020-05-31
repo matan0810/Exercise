@@ -25,7 +25,6 @@
 <script>
 import MailCard from "./MailCard.vue";
 import { mapActions } from "vuex";
-import { bus } from "../main.js";
 
 export default {
   name: "SideMenu",
@@ -45,13 +44,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["hideExtraDetails"]),
-    changeSideMenuMark() {
-      this.$router.push({ name: "Outbox" });
-    }
-  },
-  created() {
-    bus.$on("newMessage", this.changeSideMenuMark);
+    ...mapActions(["hideExtraDetails"])
   }
 };
 </script>

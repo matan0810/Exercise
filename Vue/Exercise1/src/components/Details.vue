@@ -2,7 +2,7 @@
   <div class="fullHeight">
     <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
       <v-col>
-        <MailCard :title="$route.meta.title">
+        <MailCard :title="$route.meta.title" :showFavorite="true">
           <v-card-text
             :class="[showExtraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
             class="overflow-y-auto text--primary"

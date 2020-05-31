@@ -54,7 +54,7 @@ export default {
     ...mapActions(["addOutboxMessage"]),
     submit() {
       if (this.$refs.form.validate()) {
-        let newMessage = {
+        const newMessage = {
           id: this.currentMessagesId,
           addressee: this.addressee,
           title: this.title,
@@ -66,6 +66,8 @@ export default {
         this.addOutboxMessage(newMessage);
 
         this.$refs.form.reset();
+
+        this.$router.push({ name: "Outbox" });
 
         alert("ההודעה נשלחה!");
       }
