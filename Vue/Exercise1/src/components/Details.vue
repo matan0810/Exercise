@@ -2,7 +2,7 @@
   <div class="fullHeight">
     <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
       <v-col>
-        <MailCard :title="currentTitle">
+        <MailCard :title="$route.meta.title">
           <v-card-text
             :class="[showExtraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
             class="overflow-y-auto text--primary"
@@ -21,57 +21,22 @@
 </template>
 
 <script>
-import { bus } from "../main.js";
 import ExtraDetails from "./ExtraDetails";
-// import Inbox from "./Inbox.vue";
-// import Outbox from "./Outbox.vue";
-// import Spam from "./Spam.vue";
-// import NewMessage from "./NewMessage.vue";
 import MailCard from "./MailCard.vue";
 
 export default {
   name: "Details",
-  data() {
-    return {
-      currentTitle: "דואר נכנס"
-    };
-  },
   components: {
     ExtraDetails,
-    // Inbox,
-    // Outbox,
-    // Spam,
-    // NewMessage,
     MailCard
   },
   computed: {
-    // currentBox() {
-    //   let currComponent = [];
-    //   if (this.currentTitle === "דואר נכנס") {
-    //     currComponent = Inbox;
-    //   } else if (this.currentTitle === "דואר יוצא") {
-    //     currComponent = Outbox;
-    //   } else if (this.currentTitle === "דואר זבל") {
-    //     currComponent = Spam;
-    //   } else if (this.currentTitle === "הודעה חדשה") {
-    //     currComponent = NewMessage;
-    //   }
-
-    //   return currComponent;
-    // },
     showExtraDetails() {
       return (
-        this.currentTitle === "דואר נכנס" || this.currentTitle === "דואר יוצא"
+        this.$route.meta.title === "דואר נכנס" ||
+        this.$route.meta.title === "דואר יוצא"
       );
     }
-  },
-  methods: {
-    changeTitle(newTitle) {
-      this.currentTitle = newTitle;
-    }
-  },
-  created() {
-    bus.$on("changeTitle", this.changeTitle);
   }
 };
 </script>

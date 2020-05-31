@@ -5,15 +5,13 @@
 </template>
 
 <script>
-import { spamMessages } from "../data/mails.json";
 import MailList from "../components/MailList.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Spam",
-  data() {
-    return {
-      spamMessages
-    };
+  computed: {
+    ...mapState(["spamMessages"])
   },
   components: {
     MailList

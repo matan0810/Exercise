@@ -2,12 +2,17 @@
   <MailCard :title="'תפריט'">
     <v-card-text class="text--primary">
       <v-list rounded>
-        <v-list-item-group v-model="mark" color="primary" mandatory>
-          <router-link class="sideMenuLink" v-for="item in sideBarItems" :key="item.id" :to="item.route">
-            <v-list-item @click="changeTitle" :value="item.id" link>
-              <v-icon class="ma-4">{{ item.icon }}</v-icon>
+        <v-list-item-group v-model="currentItem" color="primary" mandatory>
+          <router-link
+            class="sideMenuLink"
+            v-for="item in sideBarItems"
+            :key="item.meta.id"
+            :to="item.path"
+          >
+            <v-list-item :value="item.meta.id" link>
+              <v-icon class="ma-4">{{ item.meta.icon }}</v-icon>
               <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item-title>{{ item.meta.title }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </router-link>
@@ -18,42 +23,31 @@
 </template>
 
 <script>
-import { bus } from "../main.js";
 import MailCard from "./MailCard.vue";
+import { mapActions } from "vuex";
+import { bus } from "../main.js";
 
 export default {
   name: "SideMenu",
   data() {
     return {
-      sideBarItems: [
-        {
-          id: 0,
-          title: "הודעה חדשה",
-          icon: "mdi-email-outline",
-          route: "/newMessage"
-        },
-        { id: 1, title: "דואר נכנס", icon: "mdi-email", route: "/" },
-        { id: 2, title: "דואר יוצא", icon: "mdi-send", route: "/outbox" },
-        { id: 3, title: "דואר זבל", icon: "mdi-delete", route: "/spam" }
-      ],
-      mark: 1
+      sideBarItems: this.$router.options.routes,
+      currentItem: 1
     };
   },
   components: {
     MailCard
   },
+  watch: {
+    $route() {
+      this.currentItem = this.$route.meta.id;
+      this.hideExtraDetails();
+    }
+  },
   methods: {
-    changeTitle(event) {
-      let newTitle = event.target.textContent;
-
-      if (!newTitle) {
-        newTitle = event.target.nextElementSibling.textContent;
-      }
-
-      bus.$emit("changeTitle", newTitle);
-    },
+    ...mapActions(["hideExtraDetails"]),
     changeSideMenuMark() {
-      this.mark = 2;
+      this.$router.push({ name: "Outbox" });
     }
   },
   created() {

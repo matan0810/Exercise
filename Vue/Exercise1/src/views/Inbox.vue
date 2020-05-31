@@ -5,15 +5,13 @@
 </template>
 
 <script>
-import { inboxMessages } from "../data/mails.json";
 import MailList from "../components/MailList.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Inbox",
-  data() {
-    return {
-      inboxMessages
-    };
+  computed: {
+    ...mapState(["inboxMessages"])
   },
   components: {
     MailList

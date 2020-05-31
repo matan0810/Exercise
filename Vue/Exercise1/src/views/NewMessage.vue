@@ -24,8 +24,7 @@
 </template>
 
 <script>
-import { bus } from "../main.js";
-import { currentId } from "../data/mails.json";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "NewMessage",
@@ -48,15 +47,15 @@ export default {
         value => !!value || "אנא הכנס תוכן",
         value =>
           (value && value.length <= 200) || "תוכן חייב להכיל עד 200 תווים"
-      ],
-      currentId
+      ]
     };
   },
   methods: {
+    ...mapActions(["addOutboxMessage"]),
     submit() {
       if (this.$refs.form.validate()) {
         let newMessage = {
-          id: this.currentId,
+          id: this.currentMessagesId,
           addressee: this.addressee,
           title: this.title,
           from: "Me",
@@ -64,16 +63,16 @@ export default {
           content: this.content
         };
 
-        this.currentId += 1;
-
-        bus.$emit("newMessage", newMessage);
-        bus.$emit("changeTitle", "דואר יוצא");
+        this.addOutboxMessage(newMessage);
 
         this.$refs.form.reset();
 
         alert("ההודעה נשלחה!");
       }
     }
+  },
+  computed: {
+    ...mapState(["currentMessagesId"])
   }
 };
 </script>

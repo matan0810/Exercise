@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { bus } from "../main.js";
+import { mapActions } from "vuex";
 
 export default {
   name: "MailItem",
@@ -78,11 +78,12 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["updateExtraDetails"]),
     timeDiff(date) {
       return new Date(new Date() - date);
     },
     itemClick() {
-      bus.$emit("showDetails", this.message);
+      this.updateExtraDetails(this.message);
     },
     starClick(event) {
       this.favorite = !this.favorite;
