@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MailList :messages="spamMessages" />
+    <MailList :messages="messages.spamMessages" />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { mapState } from "vuex";
 export default {
   name: "Spam",
   computed: {
-    ...mapState(["spamMessages"])
+    ...mapState(["messages"])
   },
   components: {
     MailList

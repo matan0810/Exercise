@@ -2,7 +2,7 @@
   <div class="fullHeight">
     <v-row :class="[showExtraDetails ? 'twoThirdsHeight' : 'fullHeight']">
       <v-col>
-        <MailCard :title="$route.meta.title" :showFavorite="true">
+        <MailCard :title="$route.meta.title" :showFavorite="showFavoriteOption">
           <v-card-text
             :class="[showExtraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
             class="overflow-y-auto text--primary"
@@ -35,6 +35,13 @@ export default {
       return (
         this.$route.meta.title === "דואר נכנס" ||
         this.$route.meta.title === "דואר יוצא"
+      );
+    },
+    showFavoriteOption() {
+      return (
+        this.$route.meta.title === "דואר נכנס" ||
+        this.$route.meta.title === "דואר יוצא" ||
+        this.$route.meta.title === "דואר זבל"
       );
     }
   }

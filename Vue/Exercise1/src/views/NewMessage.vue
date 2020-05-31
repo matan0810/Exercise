@@ -60,7 +60,8 @@ export default {
           title: this.title,
           from: "Me",
           sent: Date.now(),
-          content: this.content
+          content: this.content,
+          favorite: false
         };
 
         this.addOutboxMessage(newMessage);

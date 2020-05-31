@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MailList :messages="outboxMessages" />
+    <MailList :messages="messages.outboxMessages" />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     MailList
   },
   computed: {
-    ...mapState(["outboxMessages"])
+    ...mapState(["messages"])
   }
 };
 </script>

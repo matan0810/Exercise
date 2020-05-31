@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MailList :messages="inboxMessages" />
+    <MailList :messages="messages.inboxMessages" />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { mapState } from "vuex";
 export default {
   name: "Inbox",
   computed: {
-    ...mapState(["inboxMessages"])
+    ...mapState(["messages"])
   },
   components: {
     MailList

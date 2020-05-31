@@ -10,7 +10,7 @@
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
         <v-btn icon>
-          <v-icon @click="starClick" :color="favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
+          <v-icon @click="starClick" :color="message.favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
         </v-btn>
       </v-list-item-action>
     </v-list-item>
@@ -28,11 +28,6 @@ export default {
       type: Object,
       required: true
     }
-  },
-  data: () => {
-    return {
-      favorite: false
-    };
   },
   computed: {
     contentShow() {
@@ -78,7 +73,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["updateExtraDetails"]),
+    ...mapActions(["updateExtraDetails", "flipMessageFavoriteById"]),
     timeDiff(date) {
       return new Date(new Date() - date);
     },
@@ -86,8 +81,9 @@ export default {
       this.updateExtraDetails(this.message);
     },
     starClick(event) {
-      this.favorite = !this.favorite;
       event.stopPropagation();
+
+      this.flipMessageFavoriteById(this.message.id);
     }
   }
 };

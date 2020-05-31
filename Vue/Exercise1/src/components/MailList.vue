@@ -2,7 +2,7 @@
   <div>
     <v-list two-line>
       <v-list-item-group v-model="selected" color="light-green accent-4">
-        <MailItem v-for="message in messages" :message="message" :key="message.id" />
+        <MailItem v-for="message in currentArrangedMessages" :message="message" :key="message.id" />
       </v-list-item-group>
     </v-list>
   </div>
@@ -10,6 +10,7 @@
 
 <script>
 import MailItem from "./MailItem.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "MailList",
@@ -25,6 +26,20 @@ export default {
     messages: {
       type: Array,
       required: true
+    }
+  },
+  computed: {
+    ...mapState(["showOnlyFavorites"]),
+    currentArrangedMessages() {
+      let arrangedMessages = this.messages;
+
+      if (this.showOnlyFavorites == true) {
+        arrangedMessages = this.messages.filter(
+          message => message.favorite == true
+        );
+      }
+
+      return arrangedMessages;
     }
   }
 };
