@@ -7,9 +7,10 @@
             :class="[showExtraDetails ? 'twoThirdsDetailsHeight' : 'fullDetailsHeight']"
             class="overflow-y-auto text--primary"
           >
-            <keep-alive>
-              <component :is="currentBox" />
-            </keep-alive>
+            <Inbox v-show="currentTitle === 'דואר נכנס'" />
+            <Outbox v-show="currentTitle === 'דואר יוצא'" />
+            <Spam v-show="currentTitle === 'דואר זבל'" />
+            <NewMessage v-show="currentTitle === 'הודעה חדשה'" />
           </v-card-text>
         </MailCard>
       </v-col>
@@ -35,7 +36,7 @@ export default {
   name: "Details",
   data() {
     return {
-      currentTitle: "הודעה חדשה"
+      currentTitle: "דואר נכנס"
     };
   },
   components: {
@@ -60,18 +61,6 @@ export default {
       }
 
       return currComponent;
-    },
-    currentMessages() {
-      let messegesList = [];
-      if (this.currentTitle === "דואר נכנס") {
-        messegesList = this.inboxMessages;
-      } else if (this.currentTitle === "דואר יוצא") {
-        messegesList = this.outBoxMessages;
-      } else if (this.currentTitle === "דואר זבל") {
-        messegesList = this.spamMessages;
-      }
-
-      return messegesList;
     },
     showExtraDetails() {
       return (

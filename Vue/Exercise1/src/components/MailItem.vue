@@ -9,7 +9,9 @@
 
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
-        <v-icon @click="starClick" :color="favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
+        <v-btn icon>
+          <v-icon @click="starClick" :color="favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
+        </v-btn>
       </v-list-item-action>
     </v-list-item>
     <v-divider />
@@ -17,7 +19,7 @@
 </template>
 
 <script>
-import { bus } from "../main.js"
+import { bus } from "../main.js";
 
 export default {
   name: "MailItem",

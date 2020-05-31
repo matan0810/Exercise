@@ -2,8 +2,14 @@
   <MailCard :title="'תפריט'">
     <v-card-text class="text--primary">
       <v-list rounded>
-        <v-list-item-group color="primary" mandatory>
-          <v-list-item @click="changeTitle" v-for="item in sideBarItems" :key="item.title" link>
+        <v-list-item-group v-model="mark" color="primary" mandatory>
+          <v-list-item
+            @click="changeTitle"
+            v-for="item in sideBarItems"
+            :value="item.id"
+            :key="item.title"
+            link
+          >
             <v-icon class="ma-4">{{ item.icon }}</v-icon>
             <v-list-item-content>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -24,16 +30,17 @@ export default {
   data() {
     return {
       sideBarItems: [
-        { title: "הודעה חדשה", icon: "mdi-email-outline" },
-        { title: "דואר נכנס", icon: "mdi-email" },
-        { title: "דואר יוצא", icon: "mdi-send" },
-        { title: "דואר זבל", icon: "mdi-delete" }
-      ]
+        { id: 0, title: "הודעה חדשה", icon: "mdi-email-outline" },
+        { id: 1, title: "דואר נכנס", icon: "mdi-email" },
+        { id: 2, title: "דואר יוצא", icon: "mdi-send" },
+        { id: 3, title: "דואר זבל", icon: "mdi-delete" }
+      ],
+      mark: 1
     };
   },
   components: {
     MailCard
-  },  
+  },
   methods: {
     changeTitle(event) {
       let newTitle = event.target.textContent;
@@ -43,7 +50,13 @@ export default {
       }
 
       bus.$emit("changeTitle", newTitle);
+    },
+    changeSideMenuMark() {
+      this.mark = 2;
     }
+  },
+  created() {
+    bus.$on("newMessage", this.changeSideMenuMark);
   }
 };
 </script>

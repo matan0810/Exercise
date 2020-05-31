@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-form ref="form" v-model="valid">
       <v-text-field
         v-model="addressee"
         :counter="20"
@@ -18,7 +18,6 @@
         rows="5"
         required
       />
-
       <v-btn :disabled="!valid" color="success" class="mr-4" @click="submit" rounded>submit</v-btn>
     </v-form>
   </div>
@@ -68,8 +67,11 @@ export default {
         this.currentId += 1;
 
         bus.$emit("newMessage", newMessage);
+        bus.$emit("changeTitle", "דואר יוצא");
 
         this.$refs.form.reset();
+
+        alert("ההודעה נשלחה!");
       }
     }
   }
