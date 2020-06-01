@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       valid: true,
-      addressee: "",
+      to: "",
       title: "",
       content: "",
       addresseeRules: [
@@ -80,7 +80,7 @@ export default {
       if (this.$refs.form.validate()) {
         const newMessage = {
           id: this.currentMessagesId,
-          addressee: "Me",
+          to: "Me",
           title: this.title,
           from: "Me",
           sent: Date.now(),

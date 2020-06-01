@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-list-item @click="itemClick">
+    <v-list-item :class="{ 'blue lighten-4': isSentByMe  }" @click="itemClick">
       <v-list-item-content>
         <v-list-item-title>{{ message.from }}</v-list-item-title>
         <v-list-item-subtitle>{{ message.title }}</v-list-item-subtitle>
@@ -35,6 +35,15 @@
               </v-btn>
             </template>
             <span v-text="'שחזר'" />
+          </v-tooltip>
+
+          <v-tooltip v-if="$route.name === 'Outbox'" close-delay bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn @click="replyItem" v-on="on" icon>
+                <v-icon color="black">mdi-reply</v-icon>
+              </v-btn>
+            </template>
+            <span v-text="'השב'" />
           </v-tooltip>
         </v-row>
       </v-list-item-action>
@@ -95,6 +104,9 @@ export default {
       }
 
       return lineToShow;
+    },
+    isSentByMe() {
+      return this.message.from === "Me" && this.$route.name == "Inbox";
     }
   },
   methods: {
@@ -102,7 +114,8 @@ export default {
       "updateExtraDetails",
       "flipMessageFavoriteById",
       "deleteMessageById",
-      "restoreMessageById"
+      "restoreMessageById",
+      "replyMessageById"
     ]),
     timeDiff(date) {
       return new Date(new Date() - date);
@@ -124,6 +137,11 @@ export default {
       event.stopPropagation();
 
       this.restoreMessageById(this.message.id);
+    },
+    replyItem() {
+      event.stopPropagation();
+
+      this.replyMessageById(this.message.id);
     }
   }
 };
