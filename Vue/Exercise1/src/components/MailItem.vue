@@ -13,7 +13,7 @@
           <div v-if="$route.name === 'Inbox'">
             <v-tooltip close-delay bottom>
               <template v-slot:activator="{ on }">
-                <v-btn @click="deleteItem" v-on="on" icon>
+                <v-btn icon v-on="on" @click="deleteItem">
                   <v-icon color="red">mdi-delete</v-icon>
                 </v-btn>
               </template>
@@ -22,7 +22,7 @@
 
             <v-tooltip close-delay bottom>
               <template v-slot:activator="{ on }">
-                <v-btn @click="replyItem" v-on="on" icon>
+                <v-btn icon v-on="on" @click="replyItem">
                   <v-icon color="black">mdi-reply</v-icon>
                 </v-btn>
               </template>
@@ -32,7 +32,7 @@
 
           <v-tooltip v-else-if="$route.name === 'Spam'" close-delay bottom>
             <template v-slot:activator="{ on }">
-              <v-btn @click="restoreItem" v-on="on" icon>
+              <v-btn icon v-on="on" @click="restoreItem">
                 <v-icon color="black">mdi-arrow-up</v-icon>
               </v-btn>
             </template>
@@ -41,7 +41,7 @@
 
           <v-tooltip close-delay bottom>
             <template v-slot:activator="{ on }">
-              <v-btn @click="starClick" v-on="on" icon>
+              <v-btn icon v-on="on" @click="starClick">
                 <v-icon :color="message.favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
               </v-btn>
             </template>
@@ -90,15 +90,15 @@ export default {
         lineToShow = currentDate;
       } else if (7 >= daysDiff && daysDiff > 2) {
         lineToShow = daysDiff + " ימים";
-      } else if (daysDiff == 2) {
+      } else if (daysDiff === 2) {
         lineToShow = "יומיים";
-      } else if (daysDiff == 1) {
+      } else if (daysDiff === 1) {
         lineToShow = "אתמול";
       } else if (hoursDiff > 2) {
         lineToShow = hoursDiff + " שעות";
-      } else if (hoursDiff == 2) {
+      } else if (hoursDiff === 2) {
         lineToShow = "שעתיים";
-      } else if (hoursDiff == 1) {
+      } else if (hoursDiff === 1) {
         lineToShow = "שעה";
       } else {
         lineToShow =
@@ -108,13 +108,13 @@ export default {
       return lineToShow;
     },
     isSentByMe() {
-      return this.message.to === "Me" && this.$route.name == "Outbox";
+      return this.message.to === "Me" && this.$route.name === "Outbox";
     }
   },
   methods: {
     ...mapActions([
       "updateExtraDetails",
-      "flipMessageFavoriteById",
+      "toggleMessageFavoriteById",
       "deleteMessageById",
       "restoreMessageById",
       "replyMessageById"
@@ -128,7 +128,7 @@ export default {
     starClick(event) {
       event.stopPropagation();
 
-      this.flipMessageFavoriteById(this.message.id);
+      this.toggleMessageFavoriteById(this.message.id);
     },
     deleteItem() {
       event.stopPropagation();

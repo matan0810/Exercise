@@ -1,13 +1,7 @@
 <template>
   <div id="app">
     <v-form ref="form" v-model="valid">
-      <v-text-field
-        v-model="to"
-        :counter="20"
-        :rules="addresseeRules"
-        label="נמען"
-        required
-      />
+      <v-text-field v-model="to" :counter="20" :rules="addresseeRules" label="נמען" required />
       <v-text-field v-model="title" :rules="titleRules" label="נושא" :counter="40" required />
       <v-textarea
         v-model="content"
@@ -18,8 +12,8 @@
         rows="5"
         required
       />
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="send" rounded>שלח</v-btn>
-      <v-btn :disabled="!valid" color="primary" class="mr-4" @click="sendMyself" rounded>שלח לעצמי</v-btn>
+      <v-btn rounded :disabled="!valid" color="success" class="mr-4" @click="send">שלח</v-btn>
+      <v-btn rounded :disabled="!valid" color="primary" class="mr-4" @click="sendMyself">שלח לעצמי</v-btn>
     </v-form>
   </div>
 </template>

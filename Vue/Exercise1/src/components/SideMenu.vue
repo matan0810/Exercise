@@ -30,7 +30,11 @@ export default {
   name: "SideMenu",
   data() {
     return {
-      sideBarItems: this.$router.options.routes,
+      sideBarItems: this.$router.options.routes.slice(
+        this.$router.options.sideMenuRouteRange.start,
+        this.$router.options.sideMenuRouteRange.end
+      ),
+      
       currentItem: this.$route.meta.id
     };
   },

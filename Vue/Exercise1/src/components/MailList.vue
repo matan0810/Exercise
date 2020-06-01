@@ -2,9 +2,12 @@
   <div>
     <v-list two-line>
       <v-list-item-group color="light-green accent-4">
-        <MailItem v-for="message in currentArrangedMessages" :message="message" :key="message.id" />
+        <MailItem v-for="message in currentArrangedMessages" :key="message.id" :message="message" />
       </v-list-item-group>
-      <p class="pt-6 text-center font-italic title" v-if="!currentArrangedMessages.length">לא נמצאו הודעות</p>
+      <p
+        class="pt-6 text-center font-italic title"
+        v-if="!currentArrangedMessages.length"
+      >לא נמצאו הודעות</p>
     </v-list>
   </div>
 </template>
@@ -29,9 +32,9 @@ export default {
     currentArrangedMessages() {
       let arrangedMessages = this.messages;
 
-      if (this.showOnlyFavorites == true) {
+      if (this.showOnlyFavorites === true) {
         arrangedMessages = this.messages.filter(
-          message => message.favorite == true
+          message => message.favorite === true
         );
       }
 

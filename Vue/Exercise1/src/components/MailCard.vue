@@ -2,19 +2,19 @@
   <v-card class="fullHeight">
     <v-card-title class="teal accent-4 white--text headline pr-12">
       {{ title }}
-      <FavoriteButton v-if="showFavorite" />
+      <FavoriteShow v-if="showFavorite" />
     </v-card-title>
     <slot></slot>
   </v-card>
 </template>
 
 <script>
-import FavoriteButton from "./FavoriteButton";
+import FavoriteShow from "./FavoriteShow";
 
 export default {
   name: "MailCard",
   components: {
-    FavoriteButton
+    FavoriteShow
   },
   props: {
     title: {

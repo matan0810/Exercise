@@ -1,16 +1,20 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Inbox from './views/Inbox.vue'
-import NewMessage from './views/NewMessage.vue'
-import Outbox from './views/Outbox.vue'
-import Spam from './views/Spam.vue'
+import Vue from "vue"
+import VueRouter from "vue-router"
+import Inbox from "./views/Inbox.vue"
+import NewMessage from "./views/NewMessage.vue"
+import Outbox from "./views/Outbox.vue"
+import Spam from "./views/Spam.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/newMessage',
-    name: 'NewMessage',
+    path: "/",
+    redirect: { name: "Inbox" }
+  },
+  {
+    path: "/newMessage",
+    name: "NewMessage",
     component: NewMessage,
     meta: {
       id: 0,
@@ -19,8 +23,8 @@ const routes = [
     }
   },
   {
-    path: '/',
-    name: 'Inbox',
+    path: "/inbox",
+    name: "Inbox",
     component: Inbox,
     meta: {
       id: 1,
@@ -30,8 +34,8 @@ const routes = [
   },
 
   {
-    path: '/outbox',
-    name: 'Outbox',
+    path: "/outbox",
+    name: "Outbox",
     component: Outbox,
     meta: {
       id: 2,
@@ -39,8 +43,8 @@ const routes = [
       icon: "mdi-send",
     }
   }, {
-    path: '/spam',
-    name: 'Spam',
+    path: "/spam",
+    name: "Spam",
     component: Spam,
     meta: {
       id: 3,
@@ -50,8 +54,11 @@ const routes = [
   }
 ]
 
+const sideMenuRouteRange = { start: 1, end: routes.length };
+
 const router = new VueRouter({
-  routes
+  routes,
+  sideMenuRouteRange
 })
 
 export default router
