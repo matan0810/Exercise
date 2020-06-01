@@ -2,7 +2,7 @@
   <div id="app">
     <v-form ref="form" v-model="valid">
       <v-text-field
-        v-model="addressee"
+        v-model="to"
         :counter="20"
         :rules="addresseeRules"
         label="נמען"
@@ -57,7 +57,7 @@ export default {
       if (this.$refs.form.validate()) {
         const newMessage = {
           id: this.currentMessagesId,
-          addressee: this.addressee,
+          to: this.to,
           title: this.title,
           from: "Me",
           sent: Date.now(),
