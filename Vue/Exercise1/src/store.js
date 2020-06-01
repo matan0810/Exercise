@@ -124,18 +124,23 @@ export default new Vuex.Store({
         }
       });
     },
-    deleteMessageById(state, [id, messageType]) {
-      for (let key in state.messages) {
-        if (state.messages[key].type === messageType) {
-          const deletedMessage = state.messages[key].mails.filter(message => message.id == id)[0];
-          
-          // Removes the message to current list
-          state.messages[key].mails = state.messages[key].mails.filter(message => message.id != id);
+    deleteMessageById(state, id) {
+      const deletedMessage = state.messages.inboxMessages.mails.filter(message => message.id == id)[0];
 
-          // Adds the message to spam list
-          state.messages.spamMessages.mails.unshift(deletedMessage);
-        }
-      }
+      // Removes the message to current list
+      state.messages.inboxMessages.mails = state.messages.inboxMessages.mails.filter(message => message.id != id);
+
+      // Adds the message to spam list
+      state.messages.spamMessages.mails.unshift(deletedMessage);
+    },
+    restoreMessageById(state, id) {
+      const deletedMessage = state.messages.spamMessages.mails.filter(message => message.id == id)[0];
+
+      // Removes the message to current list
+      state.messages.spamMessages.mails = state.messages.spamMessages.mails.filter(message => message.id != id);
+
+      // Adds the message to spam list
+      state.messages.inboxMessages.mails.unshift(deletedMessage);
     }
   },
   actions: {
@@ -154,8 +159,11 @@ export default new Vuex.Store({
     flipMessageFavoriteById(context, id) {
       context.commit('flipMessageFavoriteById', id);
     },
-    deleteMessageById(context, [id, messageType]) {
-      context.commit('deleteMessageById', [id, messageType]);
+    deleteMessageById(context, id) {
+      context.commit('deleteMessageById', id);
+    },
+    restoreMessageById(context, id) {
+      context.commit('restoreMessageById', id);
     }
   }
 })

@@ -10,15 +10,32 @@
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
         <v-row>
-          <v-btn icon>
-            <v-icon
-              @click="starClick"
-              :color="message.favorite ? 'yellow' :'grey lighten-1'"
-            >mdi-star</v-icon>
-          </v-btn>
-          <v-btn v-if="$route.name != 'Spam'" icon>
-            <v-icon @click="deleteItem" color="red">mdi-delete</v-icon>
-          </v-btn>
+          <v-tooltip close-delay bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn @click="starClick" v-on="on" icon>
+                <v-icon :color="message.favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
+              </v-btn>
+            </template>
+            <span v-text="'הוסף למועדפים'" />
+          </v-tooltip>
+
+          <v-tooltip v-if="$route.name === 'Inbox'" close-delay bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn @click="deleteItem" v-on="on" icon>
+                <v-icon color="red">mdi-delete</v-icon>
+              </v-btn>
+            </template>
+            <span v-text="'העבר לזבל'" />
+          </v-tooltip>
+
+          <v-tooltip v-if="$route.name === 'Spam'" close-delay bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn @click="restoreItem" v-on="on" icon>
+                <v-icon color="black">mdi-arrow-up</v-icon>
+              </v-btn>
+            </template>
+            <span v-text="'שחזר'" />
+          </v-tooltip>
         </v-row>
       </v-list-item-action>
     </v-list-item>
@@ -84,7 +101,8 @@ export default {
     ...mapActions([
       "updateExtraDetails",
       "flipMessageFavoriteById",
-      "deleteMessageById"
+      "deleteMessageById",
+      "restoreMessageById"
     ]),
     timeDiff(date) {
       return new Date(new Date() - date);
@@ -100,7 +118,12 @@ export default {
     deleteItem() {
       event.stopPropagation();
 
-      this.deleteMessageById([this.message.id, this.$route.name]);
+      this.deleteMessageById(this.message.id);
+    },
+    restoreItem() {
+      event.stopPropagation();
+
+      this.restoreMessageById(this.message.id);
     }
   }
 };
