@@ -18,7 +18,8 @@
         rows="5"
         required
       />
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="submit" rounded>submit</v-btn>
+      <v-btn :disabled="!valid" color="success" class="mr-4" @click="send" rounded>שלח</v-btn>
+      <v-btn :disabled="!valid" color="primary" class="mr-4" @click="sendMyself" rounded>שלח לעצמי</v-btn>
     </v-form>
   </div>
 </template>
@@ -51,8 +52,8 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["addOutboxMessage"]),
-    submit() {
+    ...mapActions(["addOutboxMessage", "addInboxMessage"]),
+    send() {
       if (this.$refs.form.validate()) {
         const newMessage = {
           id: this.currentMessagesId,
@@ -64,13 +65,38 @@ export default {
           favorite: false
         };
 
-        this.addOutboxMessage(newMessage);
+        if (this.$refs.form.validate()) {
+          this.addOutboxMessage(newMessage);
 
-        this.$refs.form.reset();
+          this.$refs.form.reset();
 
-        this.$router.push({ name: "Outbox" });
+          this.$router.push({ name: "Outbox" });
 
-        alert("ההודעה נשלחה!");
+          alert("ההודעה נשלחה!");
+        }
+      }
+    },
+    sendMyself() {
+      if (this.$refs.form.validate()) {
+        const newMessage = {
+          id: this.currentMessagesId,
+          addressee: "Me",
+          title: this.title,
+          from: "Me",
+          sent: Date.now(),
+          content: this.content,
+          favorite: false
+        };
+
+        if (this.$refs.form.validate()) {
+          this.addInboxMessage(newMessage);
+
+          this.$refs.form.reset();
+
+          this.$router.push({ name: "Inbox" });
+
+          alert("ההודעה נשלחה!");
+        }
       }
     }
   },

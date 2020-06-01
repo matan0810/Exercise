@@ -112,7 +112,11 @@ export default new Vuex.Store({
       state.extraDetails.shown = false;
     },
     addOutboxMessage(state, message) {
-      state.messages.outboxMessages.mails.push(message);
+      state.messages.outboxMessages.mails.unshift(message);
+      state.currentMessagesId += 1;
+    },
+    addInboxMessage(state, message) {
+      state.messages.inboxMessages.mails.unshift(message);
       state.currentMessagesId += 1;
     },
     flipMessageFavoriteById(state, id) {
@@ -155,6 +159,9 @@ export default new Vuex.Store({
     },
     addOutboxMessage(context, message) {
       context.commit('addOutboxMessage', message);
+    },
+    addInboxMessage(context, message) {
+      context.commit('addInboxMessage', message);
     },
     flipMessageFavoriteById(context, id) {
       context.commit('flipMessageFavoriteById', id);
