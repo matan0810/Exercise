@@ -9,9 +9,17 @@
 
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
-        <v-btn icon>
-          <v-icon @click="starClick" :color="message.favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
-        </v-btn>
+        <v-row>
+          <v-btn icon>
+            <v-icon
+              @click="starClick"
+              :color="message.favorite ? 'yellow' :'grey lighten-1'"
+            >mdi-star</v-icon>
+          </v-btn>
+          <v-btn icon>
+            <v-icon @click="deleteItem" color="red">mdi-delete</v-icon>
+          </v-btn>
+        </v-row>
       </v-list-item-action>
     </v-list-item>
     <v-divider />
@@ -73,7 +81,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["updateExtraDetails", "flipMessageFavoriteById"]),
+    ...mapActions([
+      "updateExtraDetails",
+      "flipMessageFavoriteById",
+      "deleteMessageById"
+    ]),
     timeDiff(date) {
       return new Date(new Date() - date);
     },
@@ -84,6 +96,11 @@ export default {
       event.stopPropagation();
 
       this.flipMessageFavoriteById(this.message.id);
+    },
+    deleteItem() {
+      event.stopPropagation();
+
+      this.deleteMessageById([this.message.id, this.$route.name]);
     }
   }
 };
