@@ -10,25 +10,27 @@
       <v-list-item-action>
         <v-list-item-action-text>{{ sendTimeShow }}</v-list-item-action-text>
         <v-row>
-          <v-tooltip close-delay bottom>
-            <template v-slot:activator="{ on }">
-              <v-btn @click="starClick" v-on="on" icon>
-                <v-icon :color="message.favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
-              </v-btn>
-            </template>
-            <span v-text="'הוסף למועדפים'" />
-          </v-tooltip>
+          <div v-if="$route.name === 'Inbox'">
+            <v-tooltip close-delay bottom>
+              <template v-slot:activator="{ on }">
+                <v-btn @click="deleteItem" v-on="on" icon>
+                  <v-icon color="red">mdi-delete</v-icon>
+                </v-btn>
+              </template>
+              <span v-text="'העבר לזבל'" />
+            </v-tooltip>
 
-          <v-tooltip v-if="$route.name === 'Inbox'" close-delay bottom>
-            <template v-slot:activator="{ on }">
-              <v-btn @click="deleteItem" v-on="on" icon>
-                <v-icon color="red">mdi-delete</v-icon>
-              </v-btn>
-            </template>
-            <span v-text="'העבר לזבל'" />
-          </v-tooltip>
+            <v-tooltip close-delay bottom>
+              <template v-slot:activator="{ on }">
+                <v-btn @click="replyItem" v-on="on" icon>
+                  <v-icon color="black">mdi-reply</v-icon>
+                </v-btn>
+              </template>
+              <span v-text="'השב'" />
+            </v-tooltip>
+          </div>
 
-          <v-tooltip v-if="$route.name === 'Spam'" close-delay bottom>
+          <v-tooltip v-else-if="$route.name === 'Spam'" close-delay bottom>
             <template v-slot:activator="{ on }">
               <v-btn @click="restoreItem" v-on="on" icon>
                 <v-icon color="black">mdi-arrow-up</v-icon>
@@ -37,13 +39,13 @@
             <span v-text="'שחזר'" />
           </v-tooltip>
 
-          <v-tooltip v-if="$route.name === 'Outbox'" close-delay bottom>
+          <v-tooltip close-delay bottom>
             <template v-slot:activator="{ on }">
-              <v-btn @click="replyItem" v-on="on" icon>
-                <v-icon color="black">mdi-reply</v-icon>
+              <v-btn @click="starClick" v-on="on" icon>
+                <v-icon :color="message.favorite ? 'yellow' :'grey lighten-1'">mdi-star</v-icon>
               </v-btn>
             </template>
-            <span v-text="'השב'" />
+            <span v-text="'הוסף למועדפים'" />
           </v-tooltip>
         </v-row>
       </v-list-item-action>
@@ -106,7 +108,7 @@ export default {
       return lineToShow;
     },
     isSentByMe() {
-      return this.message.from === "Me" && this.$route.name == "Inbox";
+      return this.message.to === "Me" && this.$route.name == "Outbox";
     }
   },
   methods: {

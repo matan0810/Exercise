@@ -151,18 +151,17 @@ export default new Vuex.Store({
       // Removes the message to current list
       state.messages.spamMessages.mails = state.messages.spamMessages.mails.filter(message => message.id != id);
 
-      // Adds the message to spam list
+      // Adds the message to inbox list
       state.messages.inboxMessages.mails.unshift(restoredMessage);
     },
     replyMessageById(state, id) {
-      // debugger // eslint-disable-line
-      const replyedMessage = state.messages.outboxMessages.mails.filter(message => message.id == id)[0];
+      const replyedMessage = state.messages.inboxMessages.mails.filter(message => message.id == id)[0];
 
       // Removes the message to current list
-      state.messages.outboxMessages.mails = state.messages.outboxMessages.mails.filter(message => message.id != id);
+      state.messages.inboxMessages.mails = state.messages.inboxMessages.mails.filter(message => message.id != id);
 
-      // Adds the message to spam list
-      state.messages.inboxMessages.mails.unshift(replyedMessage);
+      // Adds the message to outbox list
+      state.messages.outboxMessages.mails.unshift(replyedMessage);
     }
   },
   actions: {
