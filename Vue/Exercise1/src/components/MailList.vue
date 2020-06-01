@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-list two-line>
-      <v-list-item-group v-model="selected" color="light-green accent-4">
+      <v-list-item-group color="light-green accent-4">
         <MailItem v-for="message in currentArrangedMessages" :message="message" :key="message.id" />
       </v-list-item-group>
     </v-list>
@@ -14,11 +14,6 @@ import { mapState } from "vuex";
 
 export default {
   name: "MailList",
-  data() {
-    return {
-      selected: undefined
-    };
-  },
   components: {
     MailItem
   },

@@ -16,7 +16,7 @@
               :color="message.favorite ? 'yellow' :'grey lighten-1'"
             >mdi-star</v-icon>
           </v-btn>
-          <v-btn icon>
+          <v-btn v-if="$route.name != 'Spam'" icon>
             <v-icon @click="deleteItem" color="red">mdi-delete</v-icon>
           </v-btn>
         </v-row>

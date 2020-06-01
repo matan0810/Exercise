@@ -85,34 +85,10 @@ export default new Vuex.Store({
         mails: [
           {
             id: 15,
-            title: "whats up",
+            title: "Garbage",
             sent: 1589873794000,
-            from: "mark zukerberg",
+            from: "the garbage collector",
             content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam accumsan elementum ligula a venenatis. Ut bibendum ipsum sapien, quis laoreet quam molestie a. Donec eget quam nec elit posuere dapibus. Sed eleifend justo justo, in faucibus libero tincidunt in. Vestibulum tristique eget sapien non porta. Quisque leo mi, posuere sed ex ac, ullamcorper dignissim erat. Ut tempus sem ut volutpat maximus. Donec lobortis, nibh nec dignissim bibendum, nibh ante malesuada ligula, elementum viverra odio erat ac tortor. In gravida vehicula augue eu cursus. Cras nec enim rhoncus turpis blandit blandit. Praesent varius nunc ligula, vel vehicula sem porttitor nec. Ut ac nunc sed ex fringilla ultrices ac eu nulla. Sed at placerat ex. Pellentesque fermentum diam risus, vitae molestie neque suscipit ac. Mauris pretium vestibulum egestas.",
-            favorite: false,
-          },
-          {
-            id: 16,
-            title: "bla bla lba",
-            sent: 1589873694000,
-            from: "Yossi",
-            content: "Better call Saul!",
-            favorite: false,
-          },
-          {
-            id: 14,
-            title: "888888888",
-            sent: 1590502220,
-            from: "Jimmy McGill",
-            content: "Better call Saul!",
-            favorite: false,
-          },
-          {
-            id: 19,
-            title: "999",
-            sent: 1590502220,
-            from: "Jll",
-            content: "Betaul!",
             favorite: false,
           }
         ]
@@ -151,7 +127,13 @@ export default new Vuex.Store({
     deleteMessageById(state, [id, messageType]) {
       for (let key in state.messages) {
         if (state.messages[key].type === messageType) {
+          const deletedMessage = state.messages[key].mails.filter(message => message.id == id)[0];
+          
+          // Removes the message to current list
           state.messages[key].mails = state.messages[key].mails.filter(message => message.id != id);
+
+          // Adds the message to spam list
+          state.messages.spamMessages.mails.unshift(deletedMessage);
         }
       }
     }

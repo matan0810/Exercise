@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       sideBarItems: this.$router.options.routes,
-      currentItem: 1
+      currentItem: this.$route.meta.id
     };
   },
   components: {
