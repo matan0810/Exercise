@@ -4,6 +4,7 @@
       <v-list-item-group color="light-green accent-4">
         <MailItem v-for="message in currentArrangedMessages" :message="message" :key="message.id" />
       </v-list-item-group>
+      <p class="pt-6 text-center font-italic title" v-if="!currentArrangedMessages.length">לא נמצאו הודעות</p>
     </v-list>
   </div>
 </template>
