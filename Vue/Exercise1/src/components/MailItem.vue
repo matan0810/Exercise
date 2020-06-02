@@ -108,7 +108,7 @@ export default {
       return lineToShow;
     },
     isSentByMe() {
-      return this.message.to === "Me" && this.$route.name === "Outbox";
+      return this.message.from === "Me" && this.$route.name === "Outbox";
     }
   },
   methods: {

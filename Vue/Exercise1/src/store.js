@@ -33,16 +33,16 @@ export default new Vuex.Store({
       state.extraDetails.shown = false;
     },
     addOutboxMessage(state, message) {
-      state.messages.outboxMessages.mails.unshift(message);
+      state.messages.outboxMessages.unshift(message);
       state.currentMessagesId += 1;
     },
     addInboxMessage(state, message) {
-      state.messages.inboxMessages.mails.unshift(message);
+      state.messages.inboxMessages.unshift(message);
       state.currentMessagesId += 1;
     },
     toggleMessageFavoriteById(state, id) {
       Object.values(state.messages).forEach(specificMessages => {
-        let message = specificMessages.mails.find(message => message.id === id);
+        let message = specificMessages.find(message => message.id === id);
 
         if (message) {
           message.favorite = !message.favorite;
@@ -50,25 +50,25 @@ export default new Vuex.Store({
       });
     },
     deleteMessageById(state, id) {
-      const deletedMessage = state.messages.inboxMessages.mails.filter(message => message.id === id)[0];
+      const deletedMessage = state.messages.inboxMessages.filter(message => message.id === id)[0];
 
-      state.messages.inboxMessages.mails = state.messages.inboxMessages.mails.filter(message => message.id != id);
+      state.messages.inboxMessages = state.messages.inboxMessages.filter(message => message.id != id);
 
-      state.messages.spamMessages.mails.unshift(deletedMessage);
+      state.messages.spamMessages.unshift(deletedMessage);
     },
     restoreMessageById(state, id) {
-      const restoredMessage = state.messages.spamMessages.mails.filter(message => message.id === id)[0];
+      const restoredMessage = state.messages.spamMessages.filter(message => message.id === id)[0];
 
-      state.messages.spamMessages.mails = state.messages.spamMessages.mails.filter(message => message.id != id);
+      state.messages.spamMessages = state.messages.spamMessages.filter(message => message.id != id);
 
-      state.messages.inboxMessages.mails.unshift(restoredMessage);
+      state.messages.inboxMessages.unshift(restoredMessage);
     },
     replyMessageById(state, id) {
-      const replyedMessage = state.messages.inboxMessages.mails.filter(message => message.id === id)[0];
+      const replyedMessage = state.messages.inboxMessages.filter(message => message.id === id)[0];
 
-      state.messages.inboxMessages.mails = state.messages.inboxMessages.mails.filter(message => message.id != id);
+      state.messages.inboxMessages = state.messages.inboxMessages.filter(message => message.id != id);
 
-      state.messages.outboxMessages.mails.unshift(replyedMessage);
+      state.messages.outboxMessages.unshift(replyedMessage);
     }
   },
   actions: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MailList :messages="messages.inboxMessages.mails" />
+    <MailList :messages="messages.inboxMessages" />
   </div>
 </template>
 
